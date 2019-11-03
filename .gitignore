@@ -1,5 +1,8 @@
 .DS_Store
+.gitmodules
 RT
 .idea
 .vscode
 objects
+./includes/libft/objects
+./includes/libft/libft.a

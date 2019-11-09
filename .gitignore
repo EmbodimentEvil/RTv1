@@ -6,3 +6,4 @@ RT
 objects
 ./includes/libft/objects
 ./includes/libft/libft.a
+./bitmapImage.bmp

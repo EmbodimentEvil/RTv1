@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt.h                                             :+:      :+:    :+:   */
+/*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/25 00:30:23 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/01 01:45:56 by sleonia          ###   ########.fr       */
+/*   Created: 2019/11/03 23:50:20 by sleonia           #+#    #+#             */
+/*   Updated: 2019/11/09 08:19:32 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 ** Library`s
 */
 # include <math.h>
-# include <SDL.h> 
-# include "SDL_ttf.h"
+# include <SDL.h>
+// # include <SDL2_image/SDL_image.h>
 # include "./libft/includes/libft.h"
 
 /*
@@ -27,5 +27,6 @@
 # include "struct.h"
 # include "function.h"
 # include "define_value.h"
+# include "errors.h"
 
 #endif

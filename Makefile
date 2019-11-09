@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/11/02 23:36:11 by sleonia          ###   ########.fr        #
+#    Updated: 2019/11/09 05:58:18 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,19 +38,20 @@ SRC_PATH = ./source/
 OBJ_PATH = ./objects/
 INC_PATH = ./includes/
 LIB_PATH = ./includes/libft
-INC =   -I $(INC_PATH) -I $(LIB_PATH) -I ./ \
-        -I $(FRAMEDIR)/SDL2.framework/Versions/A/Headers \
-        -I $(FRAMEDIR)/SDL2_image.framework/Versions/A/Headers \
-        -I $(FRAMEDIR)/SDL2_ttf.framework/Versions/A/Headers \
-        -I $(FRAMEDIR)/SDL2_mixer.framework/Versions/A/Headers
+INC = -I .  -I $(INC_PATH) -I $(LIB_PATH) -I ./ \
+    		-I src/ \
+			-I Frameworks/SDL2.framework/Versions/A/Headers \
+			-I Frameworks/SDL2/SDL2_image.framework/Versions/A/Header \
+			-I Frameworks/SDL2/SDL2_ttf.framework/Versions/A/Header \
+			-I Frameworks/SDL2/SDL2_mixer.framework/Versions/A/Header \
+			-F Frameworks/
 
-FRAME = $(FRAMEDIR)/SDL2.framework $(FRAMEDIR)/SDL2_image.framework \
-        $(FRAMEDIR)/SDL2_mixer.framework $(FRAMEDIR)/SDL2_ttf.framework
+FRAME = 	-F ~/Library/Frameworks/ -framework SDL2 -framework SDL2_image \
+            -framework SDL2_ttf -framework SDL2_mixer
 
 FLAGS = 	-Ofast -c -g
+# FLAGS = 	-Ofast -c -g -Wall -Werror -Wextra
 
-FLAGS2 =    -F ~/Library/Frameworks/ -framework SDL2 -framework SDL2_image \
-            -framework SDL2_ttf -framework SDL2_mixer
 
 LIB = 		-L$(LIB_PATH) -lft
 
@@ -59,21 +60,28 @@ SRC_NAME =	main.c			\
 			rgb.c			\
 			validation.c	\
 			sdl.c			\
+			ray_trace.c		\
+			light.c
 
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-all: $(FRAMEDIR) $(FRAME) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	@Make -C $(LIB_PATH)
-	@gcc $(OBJ) $(INC) $(LIB) $(FLAGS2) -o $(NAME)
+	@gcc $(OBJ) $(INC) $(LIB) $(FRAME) -o $(NAME)
 	@echo ""
 	@echo "\n\t\t        $(BLUE)💥 RT READY!💥\t\t     "
 	@echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
+	@install_name_tool -change @rpath/SDL2.framework/Versions/A/SDL2 SDL2/SDL2.framework/Versions/A/SDL2 $(NAME)
+	@install_name_tool -change @rpath/SDL2_mixer.framework/Versions/A/SDL2_mixer SDL2/SDL2_mixer.framework/Versions/A/SDL2_mixer $(NAME)
+	@install_name_tool -change @rpath/SDL2_image.framework/Versions/A/SDL2_image SDL2/SDL2_image.framework/Versions/A/SDL2_image $(NAME)
+	@install_name_tool -change @rpath/SDL2_net.framework/Versions/A/SDL2_net SDL2/SDL2_net.framework/Versions/A/SDL2_net $(NAME)
+	@install_name_tool -change @rpath/SDL2_ttf.framework/Versions/A/SDL2_ttf SDL2/SDL2_ttf.framework/Versions/A/SDL2_ttf $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
@@ -83,8 +91,8 @@ $(FRAMEDIR):
 		@mkdir -p $(FRAMEDIR)
 		@rm -rf $(FRAMEDIR)/*
 
-$(FRAME): $(FRAMEDIR)/%: Frameworks/%
-		@cp -R $< $(FRAMEDIR)
+# $(FRAME): $(FRAMEDIR)/%: Frameworks/%
+# 		@cp -R $< $(FRAMEDIR)
 clean:
 	@clear
 	@Make -C $(LIB_PATH) clean

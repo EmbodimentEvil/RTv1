@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/25 00:29:58 by sleonia           #+#    #+#             */
-/*   Updated: 2019/10/10 09:55:38 by sleonia          ###   ########.fr       */
+/*   Created: 2019/11/03 23:53:55 by sleonia           #+#    #+#             */
+/*   Updated: 2019/11/09 05:52:19 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +16,10 @@ int					main(int ac, char **av)
 {
 	t_rt			*rt;
 
+	if (ac != 2)
+		ft_exit("Error input");
 	rt = init_rt();
-	validation(rt);
-	init_sdl(rt);
+	validation(av[1], rt);
+	// init_sdl(rt);
 	return (OK_CODE);
 }

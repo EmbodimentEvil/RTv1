@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/11/09 05:58:18 by sleonia          ###   ########.fr        #
+#    Updated: 2019/11/11 18:12:46 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,8 @@ INC = -I .  -I $(INC_PATH) -I $(LIB_PATH) -I ./ \
 			-I Frameworks/SDL2/SDL2_mixer.framework/Versions/A/Header \
 			-F Frameworks/
 
-FRAME = 	-F ~/Library/Frameworks/ -framework SDL2 -framework SDL2_image \
-            -framework SDL2_ttf -framework SDL2_mixer
+FRAME = 	-F Frameworks/ -framework SDL2 -framework SDL2_image \
+            -framework SDL2_ttf -framework SDL2_mixer -rpath Frameworks/
 
 FLAGS = 	-Ofast -c -g
 # FLAGS = 	-Ofast -c -g -Wall -Werror -Wextra
@@ -77,11 +77,6 @@ $(NAME): $(OBJ)
 	@echo "\n\t\t        $(BLUE)💥 RT READY!💥\t\t     "
 	@echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
-	@install_name_tool -change @rpath/SDL2.framework/Versions/A/SDL2 SDL2/SDL2.framework/Versions/A/SDL2 $(NAME)
-	@install_name_tool -change @rpath/SDL2_mixer.framework/Versions/A/SDL2_mixer SDL2/SDL2_mixer.framework/Versions/A/SDL2_mixer $(NAME)
-	@install_name_tool -change @rpath/SDL2_image.framework/Versions/A/SDL2_image SDL2/SDL2_image.framework/Versions/A/SDL2_image $(NAME)
-	@install_name_tool -change @rpath/SDL2_net.framework/Versions/A/SDL2_net SDL2/SDL2_net.framework/Versions/A/SDL2_net $(NAME)
-	@install_name_tool -change @rpath/SDL2_ttf.framework/Versions/A/SDL2_ttf SDL2/SDL2_ttf.framework/Versions/A/SDL2_ttf $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)

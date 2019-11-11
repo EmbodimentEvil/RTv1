@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 01:31:34 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 03:07:37 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 10:19:41 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,12 @@
 /*
 **	Pattern for scene: figures
 */
-# define FIGURES_1					"cone:"
-# define FIGURES_2					"cylinder:"
-# define FIGURES_3					"sphere:"
-# define FIGURES_4					"plane:"
-# define COLOR					    "\tcolor:"
+# define FIGURES_TYPE_CONE			"cone:"
+# define FIGURES_TYPE_CYLINDER		"cylinder:"
+# define FIGURES_TYPE_SPHERE		"sphere:"
+# define FIGURES_TYPE_PLANE			"plane:"
+# define FIGURES_COLOR				"\tcolor:"
+# define FIGURES_SPECULAR			"\tspecular:"
+# define FIGURES_CENTER				"\tcenter:"
+# define FIGURES_RADIUS				"\tradius:"
 #endif

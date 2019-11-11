@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 04:18:58 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:42:09 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 // 	rt->light = new_light("direction", 0.2, point);	
 // }
 
-t_lights			*new_light()
+t_lights	*new_light()
 {
 	t_lights		*light;
 
@@ -59,20 +59,21 @@ t_lights			*new_light()
 	return (light);
 }
 
-t_lights			*find_light(t_lights *light)
+t_lights	*find_light(t_lights **light)
 {
 	t_lights		*tmp;
+	t_lights		*new_elem;
 
-	tmp = light;
+	tmp = *light;
 	if (!tmp)
 		return (new_light());
 	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new_light();
-	tmp = tmp->next;
-	// printf("1 %p\n", tmp);
-	// printf("2 %p\n", tmp);
-	return (tmp);
+	{
+		tmp = (tmp)->next;
+	}
+	new_elem = new_light();
+	tmp->next = new_elem;
+	return (new_elem);
 }
 
 t_figures	*new_figure()
@@ -81,8 +82,28 @@ t_figures	*new_figure()
 
 	if (!(figure = (t_figures *)malloc(sizeof(t_figures))))
 		ft_exit(ERROR_MALLOC);
+	figure->name = NULL;
+	figure->color = KO_CODE;
+	figure->specular = KO_CODE;
 	figure->next = NULL;
 	return (figure);
+}
+
+t_figures	*find_figure(t_figures **figure)
+{
+	t_figures		*tmp;
+	t_figures		*new_elem;
+
+	tmp = *figure;
+	if (!tmp)
+		return (new_figure());
+	while (tmp->next)
+	{
+		tmp = (tmp)->next;
+	}
+	new_elem = new_figure();
+	tmp->next = new_elem;
+	return (new_elem);
 }
 
 char		*check_argument(char *arg)
@@ -110,9 +131,6 @@ t_point		get_array(char *str)
 		str++;
 	if (!(str_split = ft_strsplit(str, ',')))
 		ft_exit(ERROR_STRSPLIT);
-	// printf("|%s|\n", str_split[0]);
-	// printf("|%s|\n", str_split[1]);
-	// printf("|%s|\n", str_split[2]);
 	if (ft_len_arr(str_split) > 3)
 			ft_exit(ERROR_INPUT);
 	point.x = ft_atof(str_split[0]);
@@ -132,73 +150,115 @@ float		get_number_value(char *str)
 	return (value);
 }
 
+float		get_number_value1(char *str)
+{
+	int		value;
+	char	**str_split;
+
+	while (*str && !ft_isdigit(*str))
+		str++;
+	value = ft_atoi(str);
+	return (value);
+}
+
 int			find_camera(int i, char **file_split, t_camera *camera)
 {
-	if (ft_strcmp(CAMERA, file_split[i]) == 0
-		&& ft_strcmp("-", file_split[i - 1]) == 0
-		&& ft_strcmp("-", file_split[i + 2]) == 0)
-	{
-		if (ft_strstr(file_split[i + 1], CAMERA_CENTER))
-			camera->position = get_array(file_split[i + 1]);
+	if (ft_strcmp("-", file_split[++i]) == 0)
+	{	
+		if (ft_strcmp(CAMERA, file_split[++i]) == 0)
+		{
+			if (ft_strcmp("-", file_split[i + 1]) == 0)
+			{
+				if (ft_strstr(file_split[i], CAMERA_CENTER))
+					camera->position = get_array(file_split[i]);
+				else
+					ft_exit(ERROR_INPUT);
+			}
+		}
 		else
-			return (KO_CODE);
+			ft_exit(ERROR_INPUT);		
 	}
 	else
-		return (KO_CODE);
+		ft_exit(ERROR_INPUT);
 	return (i + 3);
 }
 
-int			find_lights(int i, char **file_split, t_lights *light)
+int			find_lights(int i, char **file_split, t_lights **light)
 {
-	// light = find_light(light);
-	t_lights	*head = light;
-	t_lights	*tmp = light;
-	// printf("3 %p\n", tmp);
+	t_lights	*tmp = *light;
+
 	while (file_split[i] && (ft_strcmp(LIGHT, file_split[i]) == 0
 		&& ft_strcmp("-", file_split[i - 1]) == 0))
 	{
-		// tmp = find_light(head);
-		if (ft_strcmp(LIGHT_TYPE_POINT, file_split[++i]))
-			tmp->type = POINT;
+		if (!tmp)
+			(tmp) = find_light(light);
+		if (ft_strcmp(LIGHT_TYPE_POINT, file_split[++i]) == 0)
+			(tmp)->type = POINT;
 		else if (ft_strcmp(LIGHT_TYPE_AMBIENT, file_split[i]))
-			tmp->type = AMBIENT;
+			(tmp)->type = AMBIENT;
 		else if (ft_strcmp(LIGHT_TYPE_DIRECTIONAL, file_split[i]))
-			tmp->type = DIRECTIONAL;
+			(tmp)->type = DIRECTIONAL;
 		else
 			ft_exit(ERROR_LIGHTS);
 		if (ft_strcmp(LIGHT_INTENSIVE, file_split[++i]))
-			tmp->intensive = get_number_value(file_split[i]);
+			(tmp)->intensive = get_number_value(file_split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
-		// printf("   %d\n", tmp->type);
 		if (ft_strstr(file_split[++i], LIGHT_POINT))
-			tmp->point = get_array(file_split[i]);
+			(tmp)->point = get_array(file_split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
 		i += 2;
-		tmp = find_light(tmp);
+		tmp = (tmp)->next;
 	}
-	if (ft_strcmp(FIGURES_1, file_split[i]) == 0
-		|| ft_strcmp(FIGURES_2, file_split[i]) == 0
-		|| ft_strcmp(FIGURES_3, file_split[i]) == 0
-		|| ft_strcmp(FIGURES_4, file_split[i]) == 0)
-		{
-			free(tmp);
-			tmp = NULL;
-	// printf("end %p -> %p\n", head, tmp);
+	if (ft_strcmp(FIGURES_TYPE_CONE, file_split[i]) == 0
+		|| ft_strcmp(FIGURES_TYPE_CYLINDER, file_split[i]) == 0
+		|| ft_strcmp(FIGURES_TYPE_SPHERE, file_split[i]) == 0
+		|| ft_strcmp(FIGURES_TYPE_PLANE, file_split[i]) == 0)
 		return (i);
-		}
 	else
 		ft_exit(ERROR_LIGHTS);
-	// printf("end %p -> %p\n", head, tmp);		
-	free(tmp);
-	tmp = NULL;
 	return (i);
 }
 
-int			find_figures(int i, char **file_split, t_figures *figure)
+int			find_figures(int i, char **file_split, t_figures **figure)
 {
-	return (OK_CODE);
+	t_figures	*tmp = *figure;
+
+	while (file_split[i] && ft_strcmp("-", file_split[i - 1]) == 0)
+	{
+		if (!tmp)
+			(tmp) = find_figure(figure);
+		if (ft_strcmp(FIGURES_TYPE_CONE, file_split[i]) == 0)
+			(tmp)->name = "cone:";
+		else if (ft_strcmp(FIGURES_TYPE_CYLINDER, file_split[i]) == 0)
+			(tmp)->name = "cylinder:";
+		else if (ft_strcmp(FIGURES_TYPE_SPHERE, file_split[i]) == 0)
+			(tmp)->name = "sphere:";
+		else if (ft_strcmp(FIGURES_TYPE_PLANE, file_split[i]) == 0)
+			(tmp)->name = "plane:";
+		else
+			ft_exit(ERROR_FIGURES);
+		if (ft_strcmp(FIGURES_COLOR, file_split[++i]))
+			(tmp)->color = get_number_value(file_split[i]);
+		else
+			ft_exit(ERROR_FIGURES);
+		if (ft_strstr(file_split[++i], FIGURES_SPECULAR))
+			(tmp)->specular = get_number_value1(file_split[i]);
+		else
+			ft_exit(ERROR_FIGURES);
+		if (ft_strstr(file_split[++i], FIGURES_CENTER))
+			(tmp)->point = get_array(file_split[i]);
+		else
+			ft_exit(ERROR_FIGURES);
+		if (ft_strstr(file_split[++i], FIGURES_RADIUS))
+			(tmp)->radius = get_number_value(file_split[i]);
+		else
+			ft_exit(ERROR_FIGURES);
+		i += 2;
+		tmp = (tmp)->next;
+	}
+	return (i);
 }
 
 void		validation(char *arg, t_rt *rt)
@@ -208,7 +268,7 @@ void		validation(char *arg, t_rt *rt)
 	char	*filename;
 	char	**file_split;
 
-	i = 1;
+	i = -1;
 	if (!(filename = check_argument(arg)))
 		ft_exit(ERROR_INPUT);
 	if (!(file = read_big_file(file, filename)))
@@ -216,17 +276,11 @@ void		validation(char *arg, t_rt *rt)
 	if (!(file_split = ft_strsplit(file, '\n')))
 		ft_exit(ERROR_STRSPLIT);
 	i = (find_camera(i, file_split, &(rt->camera)));
-	i = (find_lights(i, file_split, rt->light));
-	printf("%d  ->  %d\n", rt->light->type, rt->light->next->type);
-	// printf("lox   %p\n", rt->light);
-	// i = (find_lights(i, file_split, rt->light)); //doesnt work
-	// printf("%d\n", i);
-	// printf("%d    ->  \n", rt->light->type);
-	// printf("%d    ->   %d\n", rt->light->type, rt->light->next->type);
-	// i = (find_figures(i, file_split, rt->figure));
-	// printf("%f  ->%f  ->%f  \n", rt->camera.position.x, rt->camera.position.y, rt->camera.position.y);
+	i = (find_lights(i, file_split, &rt->light));
+	i = (find_figures(i, file_split, &rt->figure));
+	if (file_split[i])
+		ft_exit(ERROR_INPUT);
 	free(file);
 	ft_destroy_string_arr(file_split);
-	printf("LOX\n");
 }
 

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/09 09:40:06 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 07:04:21 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int					rgb(int r, int g, int b);
 **  validation.c
 */
 t_lights			*new_light();
-t_figures			*new_figure(char *name, double radius, int color,
-						t_point point);
+t_figures			*new_figure();
 void				validation(char *arg, t_rt *rt);
 
 /*

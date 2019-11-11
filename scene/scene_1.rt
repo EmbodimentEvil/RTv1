@@ -7,11 +7,6 @@ light:
 	intensive: 0.1
 	point: 0.3, 1.8, 2.5
 -
-light:
-	type: point
-	intensive: 0.1
-	point: 0.3, 1.8, 2.5
--
 sphere:
 	color: 0xFFFFFF
 	specular: 1000

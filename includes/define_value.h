@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 01:31:34 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/09 11:10:27 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 03:07:37 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "rt.h"
 
-# define HEIGHT						1000
-# define WIDTH						1000
+# define HEIGHT						1080
+# define WIDTH						1920
 # define FOV						M_PI / 2.0
 
 # define KO_CODE				    -1

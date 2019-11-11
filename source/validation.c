@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/09 15:24:08 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 04:18:58 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,26 @@ t_lights			*new_light()
 
 	if (!(light = (t_lights *)malloc(sizeof(t_lights))))
 		ft_exit(ERROR_MALLOC);
+	light->type = KO_CODE;
+	light->intensive = KO_CODE;
 	light->next = NULL;
 	return (light);
 }
 
-t_lights			*find_light(t_rt *rt)
+t_lights			*find_light(t_lights *light)
 {
-	t_lights		*light;
+	t_lights		*tmp;
 
-	light = rt->light;
-	if (!light)
+	tmp = light;
+	if (!tmp)
 		return (new_light());
-	while (light->next)
-		light = light->next;
-	light->next = new_light();
-	printf("1 %p\n", rt->light);
-	printf("2 %p\n", rt->light->next);
-	return (light->next);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_light();
+	tmp = tmp->next;
+	// printf("1 %p\n", tmp);
+	// printf("2 %p\n", tmp);
+	return (tmp);
 }
 
 t_figures	*new_figure()
@@ -145,38 +148,52 @@ int			find_camera(int i, char **file_split, t_camera *camera)
 	return (i + 3);
 }
 
-int			find_lights(int i, char **file_split, t_rt *rt)
+int			find_lights(int i, char **file_split, t_lights *light)
 {
-	if (file_split[i] && (ft_strcmp(LIGHT, file_split[i]) == 0
+	// light = find_light(light);
+	t_lights	*head = light;
+	t_lights	*tmp = light;
+	// printf("3 %p\n", tmp);
+	while (file_split[i] && (ft_strcmp(LIGHT, file_split[i]) == 0
 		&& ft_strcmp("-", file_split[i - 1]) == 0))
 	{
-		rt->light = find_light(rt);
-		printf("3 %p\n", rt->light);
+		// tmp = find_light(head);
 		if (ft_strcmp(LIGHT_TYPE_POINT, file_split[++i]))
-			rt->light->type = POINT;
+			tmp->type = POINT;
 		else if (ft_strcmp(LIGHT_TYPE_AMBIENT, file_split[i]))
-			rt->light->type = AMBIENT;
+			tmp->type = AMBIENT;
 		else if (ft_strcmp(LIGHT_TYPE_DIRECTIONAL, file_split[i]))
-			rt->light->type = DIRECTIONAL;
+			tmp->type = DIRECTIONAL;
 		else
 			ft_exit(ERROR_LIGHTS);
 		if (ft_strcmp(LIGHT_INTENSIVE, file_split[++i]))
-			rt->light->intensive = get_number_value(file_split[i]);
+			tmp->intensive = get_number_value(file_split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
+		// printf("   %d\n", tmp->type);
 		if (ft_strstr(file_split[++i], LIGHT_POINT))
-			rt->light->point = get_array(file_split[i]);
+			tmp->point = get_array(file_split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
+		i += 2;
+		tmp = find_light(tmp);
 	}
-	else if (ft_strcmp(FIGURES_1, file_split[i]) == 0
+	if (ft_strcmp(FIGURES_1, file_split[i]) == 0
 		|| ft_strcmp(FIGURES_2, file_split[i]) == 0
 		|| ft_strcmp(FIGURES_3, file_split[i]) == 0
 		|| ft_strcmp(FIGURES_4, file_split[i]) == 0)
+		{
+			free(tmp);
+			tmp = NULL;
+	// printf("end %p -> %p\n", head, tmp);
 		return (i);
+		}
 	else
 		ft_exit(ERROR_LIGHTS);
-	return (find_lights(i + 2, file_split, rt));
+	// printf("end %p -> %p\n", head, tmp);		
+	free(tmp);
+	tmp = NULL;
+	return (i);
 }
 
 int			find_figures(int i, char **file_split, t_figures *figure)
@@ -199,15 +216,15 @@ void		validation(char *arg, t_rt *rt)
 	if (!(file_split = ft_strsplit(file, '\n')))
 		ft_exit(ERROR_STRSPLIT);
 	i = (find_camera(i, file_split, &(rt->camera)));
-	// printf("%f  ->%f  ->%f  \n", rt->camera.position.x, rt->camera.position.y, rt->camera.position.y);
-	i = (find_lights(i, file_split, rt)); //doesnt work
+	i = (find_lights(i, file_split, rt->light));
+	printf("%d  ->  %d\n", rt->light->type, rt->light->next->type);
+	// printf("lox   %p\n", rt->light);
 	// i = (find_lights(i, file_split, rt->light)); //doesnt work
-		printf("%p\n", rt->light);
-		printf("%p\n", rt->light->next);
 	// printf("%d\n", i);
-	printf("%d    ->  \n", rt->light->type);
-	printf("%d    ->   %d\n", rt->light->type, rt->light->next->type);
+	// printf("%d    ->  \n", rt->light->type);
+	// printf("%d    ->   %d\n", rt->light->type, rt->light->next->type);
 	// i = (find_figures(i, file_split, rt->figure));
+	// printf("%f  ->%f  ->%f  \n", rt->camera.position.x, rt->camera.position.y, rt->camera.position.y);
 	free(file);
 	ft_destroy_string_arr(file_split);
 	printf("LOX\n");

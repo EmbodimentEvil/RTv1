@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:25:10 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/06 01:44:17 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:24:09 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void				init_sdl(t_rt *rt)
 		ft_exit("SDL_GetWindowSurface");
 	for_each(rt);
 	cycle_sdl(rt->sdl.win);
-	// IMG_SavePNG(rt->sdl.sur, "./lox.bmp");
 	SDL_DestroyWindow(rt->sdl.win);
 	SDL_Quit();
 }

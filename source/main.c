@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:53:55 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/09 05:52:19 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 18:43:33 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int					main(int ac, char **av)
 		ft_exit("Error input");
 	rt = init_rt();
 	validation(av[1], rt);
-	// init_sdl(rt);
+	init_sdl(rt);
 	return (OK_CODE);
 }

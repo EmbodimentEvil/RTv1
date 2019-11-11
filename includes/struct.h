@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 10:23:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/11 20:17:04 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define STRUCT_H
 
 # include "rt.h"
-
-// typedef enum 					e_lights
-// {
-	// POINT,
-	// AMBIENT,
-	// DIRECTIONAL
-// }								t_lights;
 
 typedef struct					s_point
 {
@@ -41,13 +34,6 @@ typedef struct					s_camera
 	t_point						position;
 }								t_camera;
 
-// typedef struct					s_lights
-// {
-// 	char						*type;
-// 	double						intensive;
-// 	t_point					direction;
-// 	struct s_lights				*next;
-// }								t_lights;
 typedef struct					s_lights
 {
 	int							type;

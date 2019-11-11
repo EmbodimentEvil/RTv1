@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/11/11 18:12:46 by sleonia          ###   ########.fr        #
+#    Updated: 2019/11/11 20:00:52 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,13 +55,16 @@ FLAGS = 	-Ofast -c -g
 
 LIB = 		-L$(LIB_PATH) -lft
 
-SRC_NAME =	main.c			\
-			init.c 			\
-			rgb.c			\
-			validation.c	\
-			sdl.c			\
-			ray_trace.c		\
-			light.c
+SRC_NAME =	main.c						\
+			init.c 						\
+			rgb.c						\
+			validation.c				\
+			sdl.c						\
+			ray_trace.c					\
+			light.c						\
+			validation_get_value.c		\
+			validation_figures.c		\
+			validation_light.c
 
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))

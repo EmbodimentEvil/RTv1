@@ -7,14 +7,21 @@ light:
 	intensive: 0.1
 	point: 0.3, 1.8, 2.5
 -
-light:
-	type: ambient
-	intensive: 0.1
-	point: 0.3, 1.8, 2.5
+sphere:
+	color: 16711680
+	specular: 1000
+	center: 0, 1, 4
+	radius: 1
 -
 sphere:
-	color: 0xFFFFFF
+	color: 65280
 	specular: 1000
-	center: 1.5, 1, 3
-	radius: 0.1
+	center: 2, 0, 4
+	radius: 1
+-
+sphere:
+	color: 255
+	specular: 1000
+	center: -2, 0, 4
+	radius: 1
 -

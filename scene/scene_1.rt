@@ -4,24 +4,29 @@ camera:
 -
 light:
 	type: point
-	intensive: 0.1
-	point: 0.3, 1.8, 2.5
+	intensive: 0.8
+	point: 2, 1, 0
+-
+light:
+	type: point
+	intensive: 0.8
+	point: 2, 1, 0
 -
 sphere:
-	color: 16711680
+	color:  255, 0, 0
 	specular: 1000
-	center: 0, 1, 4
+	center:  0, 1, 4
 	radius: 1
 -
 sphere:
-	color: 65280
+	color: 0, 255, 0
 	specular: 1000
-	center: 2, 0, 4
+	center:  2, 0, 4
 	radius: 1
 -
 sphere:
-	color: 255
+	color: 0, 0, 255
 	specular: 1000
-	center: -2, 0, 4
+	center:  -2, 0, 4
 	radius: 1
 -

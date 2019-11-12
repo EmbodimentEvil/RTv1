@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:25:10 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 19:24:09 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 18:05:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void				for_each(t_rt *rt)
 	int				x;
 	int				y;
 	t_vector		vector;
-	t_point			point;
+	t_vector		point;
 	int				color;
 
 	y = -rt->sdl.sur->h / 2 - 1;
@@ -64,7 +64,7 @@ void				init_sdl(t_rt *rt)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		ft_exit("SDL_Init");
 	if (!(rt->sdl.win = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_RESIZABLE)))
+		SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP)))
 		ft_exit("SDL_CreateWindow");
 	if (!(rt->sdl.sur = SDL_GetWindowSurface(rt->sdl.win)))
 		ft_exit("SDL_GetWindowSurface");

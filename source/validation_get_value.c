@@ -6,17 +6,17 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:42:28 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 20:09:16 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 22:23:41 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_point		get_array_value(char *str)
+t_vector		get_array_value(char *str)
 {
-	int		i;
-	t_point	point;
-	char	**str_split;
+	int			i;
+	t_vector	point;
+	char		**str_split;
 
 	i = 0;
 	while (*str && (!ft_isnumber(*str)))
@@ -32,10 +32,10 @@ t_point		get_array_value(char *str)
 	return (point);
 }
 
-float		get_float_value(char *str)
+float			get_float_value(char *str)
 {
-	float	value;
-	char	**str_split;
+	float		value;
+	char		**str_split;
 
 	while (*str && !ft_isdigit(*str))
 		str++;
@@ -43,10 +43,10 @@ float		get_float_value(char *str)
 	return (value);
 }
 
-float		get_int_value(char *str)
+float			get_int_value(char *str)
 {
-	int		value;
-	char	**str_split;
+	int			value;
+	char		**str_split;
 
 	while (*str && !ft_isdigit(*str))
 		str++;

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 20:17:04 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 21:42:18 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,40 @@
 
 # include "rt.h"
 
-typedef struct					s_point
+typedef enum					e_type_lights
 {
-	double						x;
-	double						y;
-	double						z;
-}								t_point;
+	Point,
+	Ambient,
+	Directional
+}								t_type_lights;
 
-typedef struct					s_vector
+typedef enum					e_type_figures
 {
-	double						x;
-	double						y;
-	double						z;
-}								t_vector;
+	Cone,
+	Cylinder,
+	Sphere,
+	Plane
+}								t_type_figures;
 
 typedef struct					s_camera
 {
-	t_point						position;
+	t_vector					position;
 }								t_camera;
 
 typedef struct					s_lights
 {
-	int							type;
+	t_type_lights				type;
 	double						intensive;
-	t_point						point;
+	t_vector					point;
 	struct s_lights				*next;
 }								t_lights;
 
 typedef struct					s_figures
 {
-	char						*name;
-	int							color;
+	t_type_figures				type;
+	t_vector					color;
 	int							specular;
-	t_point						point;
+	t_vector					point;
 	double						radius;
 	struct s_figures			*next;
 }								t_figures;

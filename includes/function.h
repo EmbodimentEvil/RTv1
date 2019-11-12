@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 20:16:34 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 12:28:48 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void			init_sdl(t_rt *rt);
 */
 double			vec_dot(t_vector a, t_vector b);
 t_vector		canvas_to_viewport(int x, int y, t_rt *rt);
-void			intersect_ray(t_rt *rt, t_point o, t_vector d,
+void			intersect_ray(t_rt *rt, t_vector o, t_vector d,
 						t_figures figure);
 void			init_figure(t_figures *figure);
-int				ray_trace(t_point point, t_vector vector,
+int				ray_trace(t_vector point, t_vector vector,
 						double min, double max, t_rt *rt);
 
 /*
@@ -57,7 +57,7 @@ void			validation(char *arg, t_rt *rt);
 /*
 **  validation_get_value.c
 */
-t_point			get_array_value(char *str);
+t_vector		get_array_value(char *str);
 float			get_float_value(char *str);
 float			get_int_value(char *str);
 

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 22:24:27 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 22:39:03 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,6 @@ t_figures		*find_figure(t_figures **figure)
 	return (new_elem);
 }
 
-t_vector		get_array_value1(char *str)
-{
-	int			i;
-	t_vector	point;
-	char		**str_split;
-
-	i = 0;
-	while (*str && (!ft_isnumber(*str)))
-		str++;
-	if (!(str_split = ft_strsplit(str, ',')))
-		ft_exit(ERROR_STRSPLIT);
-	if (ft_len_arr(str_split) > 3)
-		ft_exit(ERROR_INPUT);
-	point.x = ft_atoi(str_split[0]);
-	point.y = ft_atoi(str_split[1]);
-	point.z = ft_atoi(str_split[2]);
-	ft_destroy_string_arr(str_split);
-	return (point);
-}
-
 static void		check_type_figures(int i, char **file_split, t_figures *tmp)
 {
 	if (ft_strcmp(FIGURES_TYPE_CONE, file_split[i]) == 0)
@@ -82,7 +62,7 @@ static void		check_color_and_specular_figures(int i, char **file_split,
 					t_figures *tmp)
 {
 	if (ft_strcmp(FIGURES_COLOR, file_split[i]))
-		tmp->color = get_array_value1(file_split[i]);
+		tmp->color = get_array_value(file_split[i]);
 	else
 		ft_exit(ERROR_FIGURES);
 	if (ft_strstr(file_split[++i], FIGURES_SPECULAR))

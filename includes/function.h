@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 12:28:48 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/12 23:11:04 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void			intersect_ray(t_rt *rt, t_vector o, t_vector d,
 void			init_figure(t_figures *figure);
 int				ray_trace(t_vector point, t_vector vector,
 						double min, double max, t_rt *rt);
+
+/*
+**  light.c
+*/
+double		compute_light(t_vector point, t_vector normal, t_lights *lights, int specular, t_vector view);
 
 /*
 **  validation.c

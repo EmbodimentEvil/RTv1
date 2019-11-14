@@ -3,18 +3,18 @@ camera:
 	center: 0, 0, 0
 -
 light:
-	type: point
-	intensive: 0.8
-	point: 2, 1, 0
+	type: directional
+	intensive: 0.08
+	point: 0, 10, 0
 -
 light:
-	type: directional
-	intensive: 0.8
-	point: 2, 1, 0
+	type: point
+	intensive: 0.2
+	point: 2, -1, -2
 -
 sphere:
 	color:  0, 0, 255
-	specular: 50
+	specular: 200
 	center:  0, 0, 3
-	radius: 1
+	radius: 0.5
 -

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 22:46:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 23:46:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/14 19:45:46 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int				ray_trace(t_vector point, t_vector vector, double min,
 	t_figures	*tmp = rt->figure;
 	t_vector	normal;
 	t_vector	color;
+	int			color_in_figure;
 	t_vector	point2;
 
 
@@ -125,7 +126,7 @@ int				ray_trace(t_vector point, t_vector vector, double min,
 	}
 	if (figure.radius == 0)
 		return (rgb(0, 0, 0));
-	// return (figure.radius == 0 ? rgb(0, 0, 0) : figure.color);
+	// return (figure.radius == 0 ? rgb(0, 0, 0) : rgb((int)figure.color.x, (int)figure.color.y, (int)figure.color.z));
 	point2 = ft_vec_multiplication_num(vector, closest_t);
 	point2.x = point.x + point2.x;
 	point2.y = point.y + point2.y;
@@ -134,12 +135,20 @@ int				ray_trace(t_vector point, t_vector vector, double min,
 	normal.y = point2.y - figure.point.y;
 	normal.z = point2.z - figure.point.z;
 	normal = ft_vec_multiplication_num(normal, (double)(1.0 / ft_vec_length(normal)));
-	// color.x = (int)(figure.color.x) & 0xFF;
-	// color.y = ((int)(figure.color.y) >> 8) & 0xFF;
-	// color.z = ((int)(figure.color.z) >> 16) & 0xFF;
-	color.x = 0 & 0xFF;
-	color.y = 0 & 0xFF;
-	color.z = (255 >> 16) & 0xFF;
+	color_in_figure = rgb((int)figure.color.x, (int)figure.color.y, (int)figure.color.z);
+
+
+int red = color_in_figure & 0xFF;
+int green = (color_in_figure >> 8) & 0xFF;
+int blue = (color_in_figure >> 16) & 0xFF;
+	color.x = color_in_figure & 0xFF;
+	color.y = (color_in_figure >> 8) & 0xFF;
+	color.z = (color_in_figure >> 16) & 0xFF;
+
+
+	// color.x = (0xFF0000 & 0xFF0000) >> 16;
+	// color.x = 0xFF0000 & 0xFF0000;
+	// color.y = (0xFF0000 & 0xFF0000 ) >> 8;
 	color = (ft_vec_multiplication_num(color, compute_light(point, normal, rt->light, figure.specular, ft_vec_multiplication_num(vector, -3))));
 	if (color.x > 255)
 		color.x = 255;
@@ -147,6 +156,8 @@ int				ray_trace(t_vector point, t_vector vector, double min,
 		color.y = 255;
 	if (color.z > 255)
 		color.z = 255;
+	// int rgb_var = rgb(((int)color.x), (((int)color.y) ), ((int)color.z));
+	// int rgb = (((int)color.x) | (((int)color.y) ) | ((int)color.z));
 	int rgb = (((int)color.x & 0xff) << 16) | (((int)color.y & 0xff) << 8) | ((int)color.z & 0xff);
 	return (rgb);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbear <bbear@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 22:46:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/14 19:45:46 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/11/20 21:02:19 by bbear            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,9 @@ int				ray_trace(t_vector point, t_vector vector, double min,
 int red = color_in_figure & 0xFF;
 int green = (color_in_figure >> 8) & 0xFF;
 int blue = (color_in_figure >> 16) & 0xFF;
-	color.x = color_in_figure & 0xFF;
+	color.z = color_in_figure & 0xFF;
 	color.y = (color_in_figure >> 8) & 0xFF;
-	color.z = (color_in_figure >> 16) & 0xFF;
+	color.x = (color_in_figure >> 16) & 0xFF;
 
 
 	// color.x = (0xFF0000 & 0xFF0000) >> 16;

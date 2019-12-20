@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/11/12 12:28:51 by sleonia          ###   ########.fr        #
+#    Updated: 2019/12/20 08:44:58 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ FRAMEDIR = /Users/$(USER)/Library/Frameworks
 SRC_PATH = ./source/
 OBJ_PATH = ./objects/
 INC_PATH = ./includes/
-LIB_PATH = ./includes/libft
+LIB_PATH = ./libft
 INC = -I .  -I $(INC_PATH) -I $(LIB_PATH) -I ./ \
     		-I src/ \
 			-I Frameworks/SDL2.framework/Versions/A/Headers \

@@ -6,13 +6,13 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/11 20:11:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 12:47:31 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-char		*check_argument(char *arg)
+char		*check_argument_name(char *arg)
 {
 	if (ft_strcmp(arg, SCENE_1_CODE) == 0)
 		return (SCENE_1);
@@ -56,8 +56,11 @@ void		validation(char *arg, t_rt *rt)
 	char	**file_split;
 
 	i = -1;
-	if (!(filename = check_argument(arg)))
+	if (!(filename = check_argument_name(arg)))
+	{
+		show_correct_input();
 		ft_exit(ERROR_INPUT);
+	}
 	if (!(file = read_big_file(file, filename)))
 		ft_exit(ERROR_READ_BIG_FILE);
 	if (!(file_split = ft_strsplit(file, '\n')))

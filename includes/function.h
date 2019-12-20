@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/12 23:11:04 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 13:50:38 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,49 @@
 # include "rt.h"
 
 /*
-**  main.c
+**	init.c
 */
-int				main(int ac, char **av);
-
-/*
-**  init.c
-*/
+void			init_figure(t_figures *figure);
+void			init_sdl(t_rt *rt);
 t_rt			*init_rt(void);
 
 /*
-**  rgb.c
+**	help.c
 */
-int				rgb(int r, int g, int b);
+int				set_color_rgb(int red, int green, int blue);
+t_vector		calculate_fov(int x, int y, int width, int height);
+
 
 /*
-**  sdl.c
+**
 */
-void			put_pixel(int x, int y, int color, SDL_Surface *sur);
-void			cycle_sdl(SDL_Window *win);
-void			for_each(t_rt *rt);
-void			init_sdl(t_rt *rt);
 
 /*
-**  ray_trace.c
+**
 */
-double			vec_dot(t_vector a, t_vector b);
-t_vector		canvas_to_viewport(int x, int y, t_rt *rt);
-void			intersect_ray(t_rt *rt, t_vector o, t_vector d,
-						t_figures figure);
-void			init_figure(t_figures *figure);
-int				ray_trace(t_vector point, t_vector vector,
-						double min, double max, t_rt *rt);
 
 /*
-**  light.c
+**
 */
-double		compute_light(t_vector point, t_vector normal, t_lights *lights, int specular, t_vector view);
+
+/*
+**
+*/
+
+/*
+**	light.c
+*/
+
+/*
+**  main.c
+*/
+void			show_correct_input(void);
+int				main(int ac, char **av);
+
+/*
+**	ray_trace.c
+*/
+void			ray_trace(t_rt *rt);
 
 /*
 **  validation.c
@@ -71,9 +77,6 @@ float			get_int_value(char *str);
 */
 t_lights		*new_light(void);
 t_lights		*find_light(t_lights **light);
-static void		check_type_lights(int i, char **file_split, t_lights *tmp);
-static void		check_color_and_specular_figures(int i, char **file_split,
-					t_figures *tmp);
 int				lights_processing(int i, char **file_split, t_lights **light);
 
 /*
@@ -81,7 +84,6 @@ int				lights_processing(int i, char **file_split, t_lights **light);
 */
 t_figures		*new_figure(void);
 t_figures		*find_figure(t_figures **figure);
-static void		check_type_figures(int i, char **file_split, t_figures *tmp);
 int				figures_processing(int i, char **file_split,
 					t_figures **figure);
 

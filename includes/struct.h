@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/14 14:50:19 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 13:30:22 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,34 @@
 
 # include "rt.h"
 
+/*
+**	Structure for storing initial and final values of ray_trace
+*/
+
+typedef struct					s_img
+{
+	int							curnt_x;
+	int							curnt_y;
+	int							finish_x;
+	int							finish_y;
+	int							half_width;
+	int							half_height;
+}								t_img;
+
+/*
+**	Enum for types of lights
+*/
+
 typedef enum					e_type_lights
 {
 	Point,
 	Ambient,
 	Directional
 }								t_type_lights;
+
+/*
+**	Enum for types of figures
+*/
 
 typedef enum					e_type_figures
 {
@@ -68,13 +90,13 @@ typedef struct					s_calculate
 
 typedef struct					s_rt
 {
-	int							height;
-	int							width;
-	t_sdl						sdl;
+	t_sdl						*sdl;
 	t_figures					*figure;
 	t_camera					camera;
 	t_lights					*light;
 	t_calculate					calculate;
+	int							height;
+	int							width;
 }								t_rt;
 
 #endif

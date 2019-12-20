@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:19:38 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:56:20 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		validation(char *arg, t_rt *rt)
 		ft_exit(ERROR_STRSPLIT);
 	i = (find_camera(i, file_split, &(rt->camera)));
 	i = (lights_processing(i, file_split, &rt->light));
-	i = (figures_processing(i, file_split, &rt->obj));
+	i = (objects_processing(i, file_split, &rt->obj));
 	if (file_split[i])
 		ft_exit(ERROR_INPUT);
 	free(file);

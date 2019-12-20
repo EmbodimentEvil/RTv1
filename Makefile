@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/12/20 14:27:32 by sleonia          ###   ########.fr        #
+#    Updated: 2019/12/20 20:10:09 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ AQUA = \033[36m
 GREY = \033[37m
 UNDERLINE = \033[4m
 NORMAL = \033[0m
-
 
 NAME = RT
 
@@ -42,24 +41,26 @@ INC = -I .  -I $(INC_PATH) -I $(LIB_PATH) -I ./ \
 FRAME = 	-F Frameworks/ -framework SDL2 -framework SDL2_image \
             -framework SDL2_ttf -framework SDL2_mixer -rpath Frameworks/
 
-FLAGS = 	-Ofast -c -g -Wall -Werror -Wextra
+FLAGS = 	-Ofast -c -g
+# FLAGS = 	-Ofast -c -g -Wall -Werror -Wextra
 
 
 LIB = 		-L$(LIB_PATH) -lft
 
-SRC_NAME =	calculate_normals.c		\
-			draw.c					\
-			event.c					\
-			help.c					\
-			hit.c					\
-			image.c					\
-			init.c					\
-			light.c					\
-			main.c					\
-			validation.c			\
-			validation_figures.c	\
-			validation_get_value.c	\
-			validation_light.c		\
+SRC_NAME =	calculate_normals.c			\
+			color_parse.c				\
+			draw.c						\
+			find.c						\
+			help.c						\
+			hit.c						\
+			init.c						\
+			light.c						\
+			main.c						\
+			sdl_loop.c					\
+			validation.c				\
+			validation_get_value.c		\
+			validation_light.c			\
+			validation_objects.c		\
 
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:22:47 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:19:21 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:42:19 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,5 @@ t_rt			*init_rt(void)
 		ft_exit(ERROR_MALLOC);
 	if (!(rt->light = new_light()))
 		ft_exit(ERROR_MALLOC);
-	rt->height = HEIGHT;
-	rt->width = WIDTH;
 	return (rt);
 }

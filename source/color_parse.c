@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:32:44 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:17:01 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 20:07:38 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ int				color_parse(t_obj obj)
 {
 	int			color;
 
-	if (obj.radius == 0.f)
-		return (color = rgb(0, 0, 0));
-	else
-	{
-		color = rgb((int)obj.color.x, (int)obj.color.y, (int)obj.color.z);
-		return (color);	
-	}
-	return (color = rgb(0, 0, 0));
+	// if (obj.radius == 0.f)
+	// 	return (color = set_color_rgb(0, 0, 0));
+	// else
+	// {
+	// 	color = set_color_rgb((int)obj.color.x,
+	// 		(int)obj.color.y, (int)obj.color.z);
+	// 	// return (color);
+	// }
+	return (color = set_color_rgb(255, 0, 0));
 }

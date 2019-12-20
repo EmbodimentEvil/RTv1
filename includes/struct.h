@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:15:37 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:35:53 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,22 @@ typedef struct					s_root
 	double						b;
 }								t_root;
 
+/*
+**	Struct for storing values for calculating
+*/
+
+typedef struct					s_math
+{
+	double						a;
+	double						b;
+}								t_math;
+
 typedef struct					s_rt
 {
 	t_sdl						*sdl;
 	t_obj						*obj;
 	t_camera					camera;
 	t_lights					*light;
-	int							height;
-	int							width;
 }								t_rt;
 
 #endif

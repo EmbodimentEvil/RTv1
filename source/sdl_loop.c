@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sdl_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 23:53:55 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 20:13:51 by sleonia          ###   ########.fr       */
+/*   Created: 2019/12/20 12:52:14 by sleonia           #+#    #+#             */
+/*   Updated: 2019/12/20 20:13:37 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void				show_example_input(void)
+void				sdl_loop(SDL_Window *win)
 {
-	system("osascript -e \'display notification\" \
-Error input!\" with title \"Warning!\"\'");
-	ft_putstr("You must use only 1-9 for set scene\nExample: ./RT 1\n");
-}
+	SDL_Event		event;
 
-int					main(int ac, char **av)
-{
-	t_rt			*rt;
-
-	if (ac != 2)
+	while (1)
 	{
-		show_example_input();
-		ft_exit(ERROR_INPUT);
+		if (SDL_PollEvent(&(event)))
+		{
+			if (SDL_QUIT == event.type || SDLK_ESCAPE == event.key.keysym.sym)
+				break ;
+			SDL_UpdateWindowSurface(win);
+		}
 	}
-	rt = init_rt();
-	validation(av[1], rt);
-	init_sdl(rt->sdl);
-	draw(rt);
-	sdl_loop(rt->sdl->win);
-	return (OK_CODE);
+	SDL_DestroyWindow(win);
+	SDL_Quit();	
 }

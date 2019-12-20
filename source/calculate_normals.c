@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:53:37 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:16:05 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:46:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ t_vector		get_normal(t_obj *figure, t_vector point)
 		return (sphere_normal(figure, point));
 	if (figure->type == Plane)
 		return (plane_normal(figure, point));
-	else
-		ft_exit("NORMAL NOT FOUND");
+	return ((t_vector){0, 0, 0});
 }

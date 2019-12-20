@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:08:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 20:09:47 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@
 /*
 **	calculate_normals.c
 */
-t_vector		sphere_normal(t_figures *figure, t_vector point);
+t_vector		cone_normal(t_obj *figure, t_vector point);
+t_vector		cylinder_normal(t_obj *figure, t_vector point);
+t_vector		sphere_normal(t_obj *figure, t_vector point);
+t_vector		plane_normal(t_obj *figure, t_vector point);
+t_vector		get_normal(t_obj *figure, t_vector point);
 
 /*
 **	color_parse.c
 */
-void			put_pixel(int x, int y, int color, SDL_Surface *sur);
+int				set_color_rgb(int red, int green, int blue);
+int				color_parse(t_obj obj);
 
 /*
 **	draw.c
 */
-void			ray_trace(t_rt *rt);
-/*
-**	event.c
-*/
-
-/*
-**	event.c
-*/
+void			put_pixel(int x, int y, int color, SDL_Surface *sur);
+int				ray_trace(t_vector fov, double min, double max, t_rt *rt);
+void			draw(t_rt *rt);
 
 /*
 **	help.c
@@ -46,19 +46,15 @@ t_vector		calculate_fov(int x, int y, int width, int height);
 /*
 **	hit.c
 */
-t_root			hit_cone(t_vector o, t_vector d, t_figures sphere);
-t_root			hit_cylinder(t_vector o, t_vector d, t_figures sphere);
-t_root			hit_sphere(t_vector o, t_vector d, t_figures sphere);
-t_root			hit_plane(t_vector o, t_vector d, t_figures sphere);
-
-/*
-**	image.c
-*/
+t_root			hit_cone(t_vector o, t_vector d, t_obj sphere);
+t_root			hit_cylinder(t_vector o, t_vector d, t_obj sphere);
+t_root			hit_sphere(t_vector o, t_vector d, t_obj sphere);
+t_root			hit_plane(t_vector o, t_vector d, t_obj sphere);
 
 /*
 **	init.c
 */
-void			init_figure(t_figures *figure);
+void			init_figure(t_obj *figure);
 void			init_sdl(t_sdl *sdl);
 t_rt			*init_rt(void);
 
@@ -75,6 +71,11 @@ int				main(int ac, char **av);
 /*
 **	ray_trace.c
 */
+
+/*
+**	sdl_loop.c
+*/
+void			sdl_loop(SDL_Window *win);
 
 /*
 **  validation.c
@@ -98,9 +99,9 @@ int				lights_processing(int i, char **file_split, t_lights **light);
 /*
 **  validation_light.c
 */
-t_figures		*new_figure(void);
-t_figures		*find_figure(t_figures **figure);
-int				figures_processing(int i, char **file_split,
-					t_figures **figure);
+t_obj			*new_obj(void);
+t_obj			*find_obj(t_obj **obj);
+int				objects_processing(int i, char **file_split,
+					t_obj **figure);
 
 #endif

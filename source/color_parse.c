@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 23:53:55 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 14:14:28 by sleonia          ###   ########.fr       */
+/*   Created: 2019/12/20 16:32:44 by sleonia           #+#    #+#             */
+/*   Updated: 2019/12/20 19:17:01 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void				show_example_input(void)
+int				set_color_rgb(int red, int green, int blue)
 {
-	system("osascript -e \'display notification\" \
-Error input!\" with title \"Warning!\"\'");
-	ft_putstr("You must use only 1-9 for set scene\nExample: ./RT 1\n");
+	return ((red & 0xFF) << 16) + ((green & 0xFF) << 8) + (blue & 0xFF);
 }
 
-int					main(int ac, char **av)
+int				color_parse(t_obj obj)
 {
-	t_rt			*rt;
+	int			color;
 
-	if (ac != 2)
+	if (obj.radius == 0.f)
+		return (color = rgb(0, 0, 0));
+	else
 	{
-		show_example_input();
-		ft_exit(ERROR_INPUT);
+		color = rgb((int)obj.color.x, (int)obj.color.y, (int)obj.color.z);
+		return (color);	
 	}
-	rt = init_rt();
-	validation(av[1], rt);
-	init_sdl(rt->sdl);
-	ray_trace(rt);
-	return (OK_CODE);
+	return (color = rgb(0, 0, 0));
 }

@@ -6,45 +6,43 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2019/11/14 14:20:11 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:20:08 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_figures		*new_figure(void)
+t_obj		*new_figure(void)
 {
-	t_figures	*figure;
+	t_obj	*obj;
 
-	if (!(figure = (t_figures *)malloc(sizeof(t_figures))))
+	if (!(obj = (t_obj *)malloc(sizeof(t_obj))))
 		ft_exit(ERROR_MALLOC);
-	figure->type = KO_CODE;
-	figure->color.x = KO_CODE;
-	figure->color.y = KO_CODE;
-	figure->color.z = KO_CODE;
-	figure->specular = KO_CODE;
-	figure->next = NULL;
-	return (figure);
+	obj->type = KO_CODE;
+	obj->color.x = KO_CODE;
+	obj->color.y = KO_CODE;
+	obj->color.z = KO_CODE;
+	obj->specular = KO_CODE;
+	obj->next = NULL;
+	return (obj);
 }
 
-t_figures		*find_figure(t_figures **figure)
+t_obj		*find_figure(t_obj **obj)
 {
-	t_figures	*tmp;
-	t_figures	*new_elem;
+	t_obj	*tmp;
+	t_obj	*new_elem;
 
-	tmp = *figure;
+	tmp = *obj;
 	if (!tmp)
 		return (new_figure());
 	while (tmp->next)
-	{
 		tmp = (tmp)->next;
-	}
 	new_elem = new_figure();
 	tmp->next = new_elem;
 	return (new_elem);
 }
 
-static void		check_type_figures(int i, char **file_split, t_figures *tmp)
+static void		check_type_figures(int i, char **file_split, t_obj *tmp)
 {
 	if (ft_strcmp(FIGURES_TYPE_CONE, file_split[i]) == 0)
 		tmp->type = Cone;
@@ -59,7 +57,7 @@ static void		check_type_figures(int i, char **file_split, t_figures *tmp)
 }
 
 static void		check_color_and_specular_figures(int i, char **file_split,
-					t_figures *tmp)
+					t_obj *tmp)
 {
 	if (ft_strcmp(FIGURES_COLOR, file_split[i]))
 		tmp->color = get_array_value(file_split[i]);
@@ -71,20 +69,20 @@ static void		check_color_and_specular_figures(int i, char **file_split,
 		ft_exit(ERROR_FIGURES);
 }
 
-int				figures_processing(int i, char **file_split, t_figures **figure)
+int				figures_processing(int i, char **file_split, t_obj **obj)
 {
-	t_figures	*tmp;
+	t_obj	*tmp;
 
-	tmp = *figure;
+	tmp = *obj;
 	while (file_split[i] && ft_strcmp("-", file_split[i - 1]) == 0)
 	{
 		if (!tmp)
-			tmp = find_figure(figure);
+			tmp = find_figure(obj);
 		check_type_figures(i, file_split, tmp);
 		check_color_and_specular_figures(++i, file_split, tmp);
 		++i;
 		if (ft_strstr(file_split[++i], FIGURES_CENTER))
-			tmp->point = get_array_value(file_split[i]);
+			tmp->pos = get_array_value(file_split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
 		if (ft_strstr(file_split[++i], FIGURES_RADIUS))

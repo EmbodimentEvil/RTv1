@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 12:47:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:19:38 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		validation(char *arg, t_rt *rt)
 	i = -1;
 	if (!(filename = check_argument_name(arg)))
 	{
-		show_correct_input();
+		show_example_input();
 		ft_exit(ERROR_INPUT);
 	}
 	if (!(file = read_big_file(file, filename)))
@@ -67,7 +67,7 @@ void		validation(char *arg, t_rt *rt)
 		ft_exit(ERROR_STRSPLIT);
 	i = (find_camera(i, file_split, &(rt->camera)));
 	i = (lights_processing(i, file_split, &rt->light));
-	i = (figures_processing(i, file_split, &rt->figure));
+	i = (figures_processing(i, file_split, &rt->obj));
 	if (file_split[i])
 		ft_exit(ERROR_INPUT);
 	free(file);

@@ -6,16 +6,11 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:40:25 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 13:28:32 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 16:32:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-int				set_color_rgb(int red, int green, int blue)
-{
-	return ((red & 0xFF) << 16) + ((green & 0xFF) << 8) + (blue & 0xFF);
-}
 
 /*
 **	Calculate FOV to fullscreen image

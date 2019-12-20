@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 13:30:22 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 19:15:37 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "rt.h"
 
 /*
-**	Structure for storing initial and final values of ray_trace
+**	Structure for storing values of ray_trace
 */
 
 typedef struct					s_img
@@ -41,16 +41,16 @@ typedef enum					e_type_lights
 }								t_type_lights;
 
 /*
-**	Enum for types of figures
+**	Enum for types of obj
 */
 
-typedef enum					e_type_figures
+typedef enum					e_type_obj
 {
 	Cone,
 	Cylinder,
 	Sphere,
 	Plane
-}								t_type_figures;
+}								t_type_obj;
 
 typedef struct					s_camera
 {
@@ -65,15 +65,19 @@ typedef struct					s_lights
 	struct s_lights				*next;
 }								t_lights;
 
-typedef struct					s_figures
+typedef struct					s_obj
 {
-	t_type_figures				type;
+	t_type_obj					type;
 	t_vector					color;
 	int							specular;
-	t_vector					point;
+	t_vector					pos;
 	double						radius;
-	struct s_figures			*next;
-}								t_figures;
+	struct s_obj				*next;
+}								t_obj;
+
+/*
+**	Struct for storing values of sdl
+*/
 
 typedef struct					s_sdl
 {
@@ -82,19 +86,18 @@ typedef struct					s_sdl
 	SDL_Event					event;
 }								t_sdl;
 
-typedef struct					s_calculate
+typedef struct					s_root
 {
-	double						t1;
-	double						t2;
-}								t_calculate;
+	double						a;
+	double						b;
+}								t_root;
 
 typedef struct					s_rt
 {
 	t_sdl						*sdl;
-	t_figures					*figure;
+	t_obj						*obj;
 	t_camera					camera;
 	t_lights					*light;
-	t_calculate					calculate;
 	int							height;
 	int							width;
 }								t_rt;

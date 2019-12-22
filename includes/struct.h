@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:35:53 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/20 20:37:35 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ typedef struct					s_root
 
 typedef struct					s_math
 {
-	double						a;
-	double						b;
+	
 }								t_math;
 
 typedef struct					s_rt

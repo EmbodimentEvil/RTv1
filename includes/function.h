@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 20:09:47 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/23 03:13:44 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int				ray_trace(t_vector fov, double min, double max, t_rt *rt);
 void			draw(t_rt *rt);
 
 /*
+**	find.c
+*/
+int				closest_object(t_vector fov, double min, double max, t_rt *rt);
+/*
 **	help.c
 */
 int				set_color_rgb(int red, int green, int blue);
@@ -46,10 +50,11 @@ t_vector		calculate_fov(int x, int y, int width, int height);
 /*
 **	hit.c
 */
-t_root			hit_cone(t_vector o, t_vector d, t_obj sphere);
-t_root			hit_cylinder(t_vector o, t_vector d, t_obj sphere);
-t_root			hit_sphere(t_vector o, t_vector d, t_obj sphere);
-t_root			hit_plane(t_vector o, t_vector d, t_obj sphere);
+t_root			hit_cone(t_vector vec, t_obj *sphere);
+t_root			hit_cylinder(t_vector vec, t_obj *sphere);
+t_root			hit_sphere(t_vector vec, t_obj *sphere);
+t_root			hit_plane(t_vector vec, t_obj *sphere);
+t_root			hit_obj(t_vector vec, t_obj *obj);
 
 /*
 **	init.c

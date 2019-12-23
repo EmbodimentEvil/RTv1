@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:51:38 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/12/23 02:19:31 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ static void		check_color_and_specular_obj(int i, char **file_split,
 {
 	if (ft_strcmp(FIGURES_COLOR, file_split[i]))
 		tmp->color = get_array_value(file_split[i]);
+	else if ((tmp->color.x < 0 || tmp->color.x > 255) &&
+		(tmp->color.y < 0 || tmp->color.y > 255)
+			&& (tmp->color.z < 0 || tmp->color.z > 255))
+		ft_exit(ERROR_FIGURES);
 	else
 		ft_exit(ERROR_FIGURES);
 	if (ft_strstr(file_split[++i], FIGURES_SPECULAR))

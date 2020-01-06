@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:07:11 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 16:39:27 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct					s_img
 
 typedef enum					e_type_lights
 {
-	Point,
+	Point = 1,
 	Ambient,
 	Directional
 }								t_type_lights;

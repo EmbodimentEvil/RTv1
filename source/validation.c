@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:26:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 17:38:08 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int			find_camera(int i, char **file_split, t_vector *camera)
 	{
 		if (ft_strcmp(CAMERA, file_split[++i]) == 0)
 		{
-				if (ft_strstr(file_split[++i], CAMERA_CENTER))
-					*camera = get_array_value(file_split[i]);
-				else
-					ft_exit(ERROR_INPUT);
+			if (ft_strstr(file_split[++i], CAMERA_CENTER))
+				*camera = get_array_value(file_split[i]);
+			else
+				ft_exit(ERROR_INPUT);
 		}
 		else
 			ft_exit(ERROR_INPUT);
 	}
 	else
 		ft_exit(ERROR_INPUT);
-	return (i + 3);
+	return (i + 2);
 }
 
 void		validation(char *arg, t_rt *rt)
@@ -65,10 +65,8 @@ void		validation(char *arg, t_rt *rt)
 	if (!(file_split = ft_strsplit(file, '\n')))
 		ft_exit(ERROR_STRSPLIT);
 	i = (find_camera(i, file_split, &(rt->camera)));
-	i = (lights_processing(i - 1, file_split, &rt->light));
+	i = (lights_processing(i, file_split, &rt->light));
 	i = (objects_processing(i, file_split, &rt->obj));
-	// if (file_split[i])
-		// ft_exit(ERROR_INPUT);
 	free(file);
 	ft_destroy_string_arr(file_split);
 }

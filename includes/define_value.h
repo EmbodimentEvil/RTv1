@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 01:31:34 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:06:38 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 16:44:13 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define WIDTH						1920
 # define FOV						M_PI / 2.0
 
-# define KO_CODE				    -1
-# define OK_CODE					0
+# define MIN						0.0001f
+# define MAX						1000000.0
 
 /*
 **	Argument`s
@@ -36,13 +36,6 @@
 # define SCENE_4					"./scene/scene_4.rt"
 
 /*
-**	Light`s
-*/
-# define AMBIENT					1
-# define POINT						2
-# define DIRECTIONAL				3
-
-/*
 **	Pattern for scene: camera
 */
 # define CAMERA						"camera:"
@@ -56,7 +49,7 @@
 # define LIGHT_TYPE_AMBIENT			"\ttype: ambient"
 # define LIGHT_TYPE_DIRECTIONAL		"\ttype: directional"
 # define LIGHT_INTENSIVE			"\tintensive"
-# define LIGHT_POINT				"\tpoint:"
+# define LIGHT_POS					"\tpos:"
 
 /*
 **	Pattern for scene: figures

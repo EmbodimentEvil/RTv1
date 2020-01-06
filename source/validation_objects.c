@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/23 02:19:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:48:07 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ t_obj		*new_obj(void)
 
 	if (!(obj = (t_obj *)malloc(sizeof(t_obj))))
 		ft_exit(ERROR_MALLOC);
-	obj->type = KO_CODE;
-	obj->color.x = KO_CODE;
-	obj->color.y = KO_CODE;
-	obj->color.z = KO_CODE;
-	obj->specular = KO_CODE;
+	obj->type = 0;
+	obj->color.x = 0;
+	obj->color.y = 0;
+	obj->color.z = 0;
+	obj->specular = 0;
 	obj->next = NULL;
 	return (obj);
 }

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:19:43 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 16:45:44 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_lights		*new_light(void)
 
 	if (!(light = (t_lights *)malloc(sizeof(t_lights))))
 		ft_exit(ERROR_MALLOC);
-	light->type = KO_CODE;
-	light->intensive = KO_CODE;
+	light->type = -1;
+	light->intensive = -1;
 	light->next = NULL;
 	return (light);
 }
@@ -43,9 +43,9 @@ static void		check_type_lights(int i, char **file_split, t_lights *tmp)
 {
 	if (ft_strcmp(LIGHT_TYPE_POINT, file_split[i]) == 0)
 		tmp->type = Point;
-	else if (ft_strcmp(LIGHT_TYPE_AMBIENT, file_split[i]))
+	else if (ft_strcmp(LIGHT_TYPE_AMBIENT, file_split[i]) == 0)
 		tmp->type = Ambient;
-	else if (ft_strcmp(LIGHT_TYPE_DIRECTIONAL, file_split[i]))
+	else if (ft_strcmp(LIGHT_TYPE_DIRECTIONAL, file_split[i]) == 0)
 		tmp->type = Directional;
 	else
 		ft_exit(ERROR_LIGHTS);
@@ -66,7 +66,7 @@ int				lights_processing(int i, char **file_split, t_lights **light)
 			tmp->intensive = get_float_value(file_split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
-		if (ft_strstr(file_split[++i], LIGHT_POINT))
+		if (ft_strstr(file_split[++i], LIGHT_POS))
 			tmp->point = get_array_value(file_split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);

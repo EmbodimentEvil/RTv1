@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:12:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 16:26:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,26 @@ t_vector		get_normal(t_obj *figure, t_vector point);
 **	color_parse.c
 */
 int				set_color_rgb(int red, int green, int blue);
-int				color_parse(t_obj obj);
+int				color_parse(int color, t_vector point, t_vector normal,
+							t_lights *light, t_obj obj, t_vector dir);
 
 /*
 **	draw.c
 */
 void			put_pixel(int x, int y, int color, SDL_Surface *sur);
-int				ray_trace(t_vector fov, double min, double max, t_rt *rt);
+int				ray_trace(t_vector dir, t_rt *rt);
 void			draw(t_rt *rt);
 
 /*
 **	find.c
 */
-int				closest_object(t_vector fov, double min, double max, t_rt *rt);
+int				closest_object(t_obj *cur_obj, t_vector dir,
+								double *closest_t, t_rt *rt);
 /*
 **	help.c
 */
 int				set_color_rgb(int red, int green, int blue);
-t_vector		calculate_fov(int x, int y, int width, int height);
+t_vector		calculate_direction(int x, int y, int width, int height);
 
 /*
 **	hit.c
@@ -66,6 +68,7 @@ t_rt			*init_rt(void);
 /*
 **	light.c
 */
+double			compute_light(t_vector point, t_vector normal, t_lights *lights, int specular, t_vector view);
 
 /*
 **  main.c

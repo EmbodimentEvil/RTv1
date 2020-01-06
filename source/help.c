@@ -6,17 +6,13 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:40:25 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 14:08:23 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:41:05 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-/*
-**	Calculate FOV to fullscreen image
-*/
-
-t_vector		calculate_fov(int x, int y, int width, int height)
+t_vector		calculate_direction(int x, int y, int width, int height)
 {
 	t_vector	vector;
 

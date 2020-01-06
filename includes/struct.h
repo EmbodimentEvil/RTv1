@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 20:37:35 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:07:11 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ typedef enum					e_type_obj
 	Plane
 }								t_type_obj;
 
-typedef struct					s_camera
-{
-	t_vector					position;
-}								t_camera;
-
 typedef struct					s_lights
 {
 	t_type_lights				type;
@@ -96,16 +91,16 @@ typedef struct					s_root
 **	Struct for storing values for calculating
 */
 
-typedef struct					s_math
-{
+// typedef struct					s_math
+// {
 	
-}								t_math;
+// }								t_math;
 
 typedef struct					s_rt
 {
 	t_sdl						*sdl;
 	t_obj						*obj;
-	t_camera					camera;
+	t_vector					camera;
 	t_lights					*light;
 }								t_rt;
 

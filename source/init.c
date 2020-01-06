@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:22:47 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:42:19 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 14:09:28 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void			init_sdl(t_sdl *sdl)
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		ft_exit("SDL_Init");
 	if (!(sdl->win = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP)))
+		SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN)))
+		// SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP)))
 		ft_exit("SDL_CreateWindow");
 	if (!(sdl->sur = SDL_GetWindowSurface(sdl->win)))
 		ft_exit("SDL_GetWindowSurface");

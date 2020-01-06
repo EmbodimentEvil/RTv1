@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 19:27:19 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/23 03:23:30 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:12:23 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int				closest_object(t_vector fov, double min, double max, t_rt *rt)
 
 	tmp = rt->obj;
 	closest_t = INFINITY;
-
 	while (tmp)
 	{
-		root = hit_obj(fov, tmp);
+		root = hit_obj(fov, rt->camera, tmp);
 		if (root.a >= min && root.a <= max && root.a < closest_t)
 		{
 			closest_t = root.a;
@@ -37,6 +36,7 @@ int				closest_object(t_vector fov, double min, double max, t_rt *rt)
 		}
 		tmp = tmp->next;
 	}
-	return (obj.radius == 0 ? set_color_rgb(0, 0, 0) : (set_color_rgb((int)obj.color.x,
-		(int)obj.color.y, (int)obj.color.z)));
+	// compute_light();
+	return (obj.radius == 0 ? set_color_rgb(0, 0, 0)
+	: (set_color_rgb((int)obj.color.x, (int)obj.color.y, (int)obj.color.z)));
 }

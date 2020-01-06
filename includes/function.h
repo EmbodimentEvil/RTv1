@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/23 03:13:44 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:12:07 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ t_vector		calculate_fov(int x, int y, int width, int height);
 /*
 **	hit.c
 */
-t_root			hit_cone(t_vector vec, t_obj *sphere);
-t_root			hit_cylinder(t_vector vec, t_obj *sphere);
-t_root			hit_sphere(t_vector vec, t_obj *sphere);
-t_root			hit_plane(t_vector vec, t_obj *sphere);
-t_root			hit_obj(t_vector vec, t_obj *obj);
+t_root			hit_cone(t_vector vec, t_vector camera, t_obj *sphere);
+t_root			hit_cylinder(t_vector vec, t_vector camera, t_obj *sphere);
+t_root			hit_sphere(t_vector vec, t_vector camera, t_obj *sphere);
+t_root			hit_plane(t_vector vec, t_vector camera, t_obj *sphere);
+t_root			hit_obj(t_vector vec, t_vector camera, t_obj *obj);
 
 /*
 **	init.c

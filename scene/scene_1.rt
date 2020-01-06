@@ -13,7 +13,13 @@ light:
 	point: 2, -1, -2
 -
 sphere:
-	color:  255, 0, 0
+	color:  0, 0, 255
+	specular: 200
+	center:  0, 0, 3
+	radius: 0.5
+-
+plane:
+	color:  0, 0, 255
 	specular: 200
 	center:  0, 0, 3
 	radius: 0.5

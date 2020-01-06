@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:50:09 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/23 03:12:20 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:07:30 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,18 @@ void			put_pixel(int x, int y, int color, SDL_Surface *sur)
 
 int				ray_trace(t_vector fov, double min, double max, t_rt *rt)
 {
-	int color = closest_object(fov, min, max, rt);
+	int			color;
+	t_vector	point;
+	t_vector	origin;
+	t_vector	direction;
+
+	color = closest_object(fov, min, max, rt);
+	origin = get_normal(rt->obj, point);
 	return (color);
 	// return (color_parse(*rt->obj));
 }
 
-void			draw(t_rt *rt)
+void			draw(t_rt *rt) //переименовать и переписать
 {
 	t_img		img;
 	t_vector	fov;

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:50:20 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 08:44:50 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 14:18:21 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <SDL.h>
 # include "../libft/includes/libft.h"
+# include <stdbool.h>
 
 /*
 ** My header`s

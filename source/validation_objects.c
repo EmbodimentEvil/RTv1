@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:48:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 18:44:47 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ int				objects_processing(int i, char **file_split, t_obj **obj)
 			ft_exit(ERROR_FIGURES);
 		if (ft_strstr(file_split[++i], FIGURES_RADIUS))
 			tmp->radius = get_float_value(file_split[i]);
+		else
+			ft_exit(ERROR_FIGURES);
+		if (ft_strstr(file_split[++i], FIGURES_DIRECTIONAL))
+			tmp->direction = get_array_value(file_split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
 		i += 2;

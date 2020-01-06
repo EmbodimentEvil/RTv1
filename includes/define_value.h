@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 01:31:34 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 16:44:13 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 18:43:15 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@
 # define FIGURES_SPECULAR			"\tspecular:"
 # define FIGURES_CENTER				"\tcenter:"
 # define FIGURES_RADIUS				"\tradius:"
+# define FIGURES_DIRECTIONAL		"\tdirection:"
 #endif

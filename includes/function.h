@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 16:26:57 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 18:46:59 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ t_vector		calculate_direction(int x, int y, int width, int height);
 /*
 **	hit.c
 */
-t_root			hit_cone(t_vector vec, t_vector camera, t_obj *sphere);
-t_root			hit_cylinder(t_vector vec, t_vector camera, t_obj *sphere);
+t_root			hit_cone(t_vector vec, t_vector camera, t_obj *cone);
+t_root			hit_cylinder(t_vector vec, t_vector camera, t_obj *cylinder);
 t_root			hit_sphere(t_vector vec, t_vector camera, t_obj *sphere);
-t_root			hit_plane(t_vector vec, t_vector camera, t_obj *sphere);
+t_root			hit_plane(t_vector vec, t_vector camera, t_obj *plane);
 t_root			hit_obj(t_vector vec, t_vector camera, t_obj *obj);
 
 /*
@@ -68,7 +68,8 @@ t_rt			*init_rt(void);
 /*
 **	light.c
 */
-double			compute_light(t_vector point, t_vector normal, t_lights *lights, int specular, t_vector view);
+double			compute_light(t_vector point, t_vector normal,
+							t_lights *lights, int specular, t_vector view);
 
 /*
 **  main.c

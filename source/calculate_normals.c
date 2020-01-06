@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:53:37 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/23 21:34:52 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 18:51:51 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_vector		plane_normal(t_obj *obj, t_vector point)
 {
 	t_vector	normal;
 
+	normal = obj->direction;
 	return (normal);
 }
 

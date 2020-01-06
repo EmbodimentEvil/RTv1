@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 16:39:27 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 18:38:11 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct					s_obj
 	int							specular;
 	t_vector					pos;
 	double						radius;
+	t_vector					direction;
 	struct s_obj				*next;
 }								t_obj;
 
@@ -86,15 +87,6 @@ typedef struct					s_root
 	double						a;
 	double						b;
 }								t_root;
-
-/*
-**	Struct for storing values for calculating
-*/
-
-// typedef struct					s_math
-// {
-	
-// }								t_math;
 
 typedef struct					s_rt
 {

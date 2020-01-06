@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:32:27 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:11:50 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 18:50:31 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ t_root			hit_sphere(t_vector vec, t_vector camera, t_obj *sphere)
 	return (root);
 }
 
-t_root			hit_plane(t_vector vec, t_vector camera, t_obj *sphere)
+t_root			hit_plane(t_vector vec, t_vector camera, t_obj *plane)
 {
 	t_root		root;
 
+	root = (t_root){-1, -1};
+	if (plane->direction.x != 0 || plane->direction.y != 0 || plane->direction.z != 0)
+		root.a = ft_vec_dot(plane->direction, ft_vec_subtract(plane->pos, camera)) /
+			ft_vec_dot(plane->direction, vec);
+	root.b = -1.0;
 	return (root);
 }
 

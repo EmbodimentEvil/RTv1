@@ -6,13 +6,14 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:46:04 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 16:39:58 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/06 17:43:35 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-double		compute_light(t_vector point, t_vector normal, t_lights *lights, int specular, t_vector view)
+double		compute_light(t_vector point, t_vector normal,
+							t_lights *lights, int specular, t_vector view)
 {
 	double	intensive;
 	double	len_n;

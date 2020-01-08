@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:32:27 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 19:33:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/08 20:19:45 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,26 @@
 
 t_root			hit_cone(t_vector dir, t_vector camera, t_obj *cone)
 {
+	t_vector	res;
+	float		discrim;
 	t_root		root;
+	float		k;
 
+	k = 1 + cone->radius * cone->radius;
+	res.x = ft_vec_dot(dir, dir) -
+			k * (float)pow(ft_vec_dot(dir, cone->direction), 2.0);
+	res.y = 2 * (ft_vec_dot(dir, ft_vec_subtract(camera, cone->pos)) -
+			k * ft_vec_dot(dir, cone->direction) *
+			ft_vec_dot(ft_vec_subtract(camera, cone->pos), cone->direction));
+	res.z = ft_vec_dot(ft_vec_subtract(camera, cone->pos), ft_vec_subtract(camera, cone->pos)) -
+			k * (float)pow(ft_vec_dot(ft_vec_subtract(camera, cone->pos), cone->direction), 2);
+	discrim = res.y * res.y - (4.0f * res.x * res.z);
+	if (discrim < 0)
+	{
+		return (t_root){-1, -1};
+	}
+	root.a = ((-res.y + sqrtf(discrim)) / (2.0 * res.x));
+	root.b = ((-res.y - sqrtf(discrim)) / (2.0 * res.x));
 	return (root);
 }
 

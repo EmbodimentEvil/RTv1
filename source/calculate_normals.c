@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:53:37 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 19:38:36 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/08 20:15:39 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,15 @@
 t_vector		cone_normal(t_obj *obj, t_vector point)
 {
 	t_vector	normal;
+	double		m;
+	double		k;
 
+	k = (1 + obj->radius * obj->radius);
+	m = ft_vec_dot(ft_vec_subtract(point, obj->pos), obj->direction);
+	normal = ft_vec_multiplication_num((obj->direction), (float)(m * k));
+	normal = ft_vec_subtract(ft_vec_subtract(point, obj->pos), normal);
+	normal = ft_vec_multiplication_num(normal,
+		(double)(1.f / ft_vec_length(normal)));
 	return (normal);
 }
 

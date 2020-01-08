@@ -6,11 +6,13 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:50:09 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 17:28:49 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/08 19:44:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+// bool	lox = false;
 
 void			put_pixel(int x, int y, int color, SDL_Surface *sur)
 {
@@ -22,17 +24,26 @@ void			put_pixel(int x, int y, int color, SDL_Surface *sur)
 
 int				ray_trace(t_vector dir, t_rt *rt)
 {
-	int			color;
 	t_vector	point;
 	t_vector	normal;
-	t_obj		cur_obj;
+	t_obj		closest_obj;
 	double		closest_t;
 
-	color = closest_object(&cur_obj, dir, &closest_t, rt);
+	closest_obj.pos.x = 0;
+	closest_obj.pos.y = 0;
+	closest_obj.pos.z = 0;
+	closest_object(&closest_obj, dir, &closest_t, rt);
 	point = ft_vec_sum(rt->camera,
 				ft_vec_multiplication_num(dir, closest_t));
-	normal = get_normal(rt->obj, point);
-	return (color_parse(color, point, normal, rt->light, cur_obj, dir));
+	normal = get_normal(&closest_obj, point);
+	// if (lox)
+	// {
+	// 	printf("%f %f %f\n", normal.x, normal.y, normal.z);
+	// 	lox = false;
+	// }
+	int color = color_parse(point, normal, rt->light, closest_obj, dir);
+	return (color);
+	// return (color_parse(point, normal, rt->light, closest_obj, dir));
 }
 
 void			draw(t_rt *rt) //переименовать и переписать
@@ -51,6 +62,11 @@ void			draw(t_rt *rt) //переименовать и переписать
 		img.finish_x = (rt->sdl->sur->w >> 1);
 		while (++img.curnt_x < img.finish_x)
 		{
+			// if (img.curnt_y == 600 && img.curnt_x == 500)
+			// 	lox = true;
+
+			// if (img.curnt_x == 0 && img.curnt_y == 0)
+			// 	lox = true;
 			dir = calculate_direction(img.curnt_x, img.curnt_y,
 				rt->sdl->sur->w, rt->sdl->sur->h);
 			color = ray_trace(dir, rt);

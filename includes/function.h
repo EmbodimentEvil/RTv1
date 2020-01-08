@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 18:46:59 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/08 19:32:51 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vector		get_normal(t_obj *figure, t_vector point);
 **	color_parse.c
 */
 int				set_color_rgb(int red, int green, int blue);
-int				color_parse(int color, t_vector point, t_vector normal,
+int				color_parse(t_vector point, t_vector normal,
 							t_lights *light, t_obj obj, t_vector dir);
 
 /*
@@ -41,8 +41,9 @@ void			draw(t_rt *rt);
 /*
 **	find.c
 */
-int				closest_object(t_obj *cur_obj, t_vector dir,
+void			closest_object(t_obj *closest_obj, t_vector dir,
 								double *closest_t, t_rt *rt);
+
 /*
 **	help.c
 */
@@ -52,11 +53,11 @@ t_vector		calculate_direction(int x, int y, int width, int height);
 /*
 **	hit.c
 */
-t_root			hit_cone(t_vector vec, t_vector camera, t_obj *cone);
-t_root			hit_cylinder(t_vector vec, t_vector camera, t_obj *cylinder);
-t_root			hit_sphere(t_vector vec, t_vector camera, t_obj *sphere);
-t_root			hit_plane(t_vector vec, t_vector camera, t_obj *plane);
-t_root			hit_obj(t_vector vec, t_vector camera, t_obj *obj);
+t_root			hit_cone(t_vector dir, t_vector camera, t_obj *cone);
+t_root			hit_cylinder(t_vector dir, t_vector camera, t_obj *cylinder);
+t_root			hit_sphere(t_vector dir, t_vector camera, t_obj *sphere);
+t_root			hit_plane(t_vector dir, t_vector camera, t_obj *plane);
+t_root			hit_obj(t_vector dir, t_vector camera, t_obj *obj);
 
 /*
 **	init.c

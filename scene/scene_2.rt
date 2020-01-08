@@ -5,24 +5,24 @@ camera:
 light:
 	type: directional
 	intensive: 0.3
-	pos: 2, 1, 0
+	pos: 0, 1, 0
 -
 light:
 	type: point
 	intensive: 0.2
-	pos: 2, 1, 0
+	pos: 0, 1, 0
 -
 plane:
 	color:  255, 0, 0
 	specular: 20
-	center:  0, 0, 3
+	center:  0, 0, 2
 	radius: 0.1
 	direction: 1, 1, 1
 -
-plane:
-	color:  0, 255, 0
+sphere:
+	color:  0, 0, 255
 	specular: 20
-	center:  0, 0, 3
-	radius: 0.1
-	direction: 1, 1, 1
+	center:  0, 0, 1
+	radius: 0.2
+	direction: 1, 2, 3
 -

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:32:44 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 15:43:28 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:42:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int				color_parse(t_vector point, t_vector normal,
 							t_lights *light, t_obj obj, t_vector dir)
 {
 	t_vector	rgb;
-	
+
 	rgb = ft_vec_multiplication_num(obj.color,
 			compute_light(point, normal, light, obj.specular,
 			ft_vec_multiplication_num(dir, -3)));

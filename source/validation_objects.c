@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 14:51:24 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:41:11 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,58 +42,58 @@ t_obj			*find_obj(t_obj **obj)
 	return (new_elem);
 }
 
-static void		check_type_objects(int i, char **file_split, t_obj *tmp)
+static void		check_type_objects(int i, char **split, t_obj *tmp)
 {
-	if (ft_strcmp(FIGURES_TYPE_CONE, file_split[i]) == 0)
+	if (ft_strcmp(FIGURES_TYPE_CONE, split[i]) == 0)
 		tmp->type = Cone;
-	else if (ft_strcmp(FIGURES_TYPE_CYLINDER, file_split[i]) == 0)
+	else if (ft_strcmp(FIGURES_TYPE_CYLINDER, split[i]) == 0)
 		tmp->type = Cylinder;
-	else if (ft_strcmp(FIGURES_TYPE_SPHERE, file_split[i]) == 0)
+	else if (ft_strcmp(FIGURES_TYPE_SPHERE, split[i]) == 0)
 		tmp->type = Sphere;
-	else if (ft_strcmp(FIGURES_TYPE_PLANE, file_split[i]) == 0)
+	else if (ft_strcmp(FIGURES_TYPE_PLANE, split[i]) == 0)
 		tmp->type = Plane;
 	else
 		ft_exit(ERROR_FIGURES);
 }
 
-static void		check_color_and_specular_obj(int i, char **file_split,
+static void		check_color_and_specular_obj(int i, char **split,
 					t_obj *tmp)
 {
-	if (ft_strcmp(FIGURES_COLOR, file_split[i]))
-		tmp->color = get_array_value(file_split[i]);
+	if (ft_strcmp(FIGURES_COLOR, split[i]))
+		tmp->color = get_array_value(split[i]);
 	else if ((tmp->color.x < 0 || tmp->color.x > 255) &&
 		(tmp->color.y < 0 || tmp->color.y > 255)
 			&& (tmp->color.z < 0 || tmp->color.z > 255))
 		ft_exit(ERROR_FIGURES);
 	else
 		ft_exit(ERROR_FIGURES);
-	if (ft_strstr(file_split[++i], FIGURES_SPECULAR))
-		tmp->specular = get_float_value(file_split[i]);
+	if (ft_strstr(split[++i], FIGURES_SPECULAR))
+		tmp->specular = get_float_value(split[i]);
 	else
 		ft_exit(ERROR_FIGURES);
 }
 
-int				objects_processing(int i, char **file_split, t_obj **obj)
+int				objects_processing(int i, char **split, t_obj **obj)
 {
 	t_obj	*tmp;
 
 	tmp = *obj;
-	while (file_split[i] && (file_split[i - 1] && ft_strcmp("-", file_split[i - 1]) == 0))
+	while (split[i] && (split[i - 1] && ft_strcmp("-", split[i - 1]) == 0))
 	{
 		if (!tmp)
 			tmp = find_obj(obj);
-		check_type_objects(i++, file_split, tmp);
-		check_color_and_specular_obj(i++, file_split, tmp);
-		if (ft_strstr(file_split[++i], FIGURES_POS))
-			tmp->pos = get_array_value(file_split[i]);
+		check_type_objects(i++, split, tmp);
+		check_color_and_specular_obj(i++, split, tmp);
+		if (ft_strstr(split[++i], FIGURES_POS))
+			tmp->pos = get_array_value(split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
-		if (ft_strstr(file_split[++i], FIGURES_RADIUS))
-			tmp->radius = get_float_value(file_split[i]);
+		if (ft_strstr(split[++i], FIGURES_RADIUS))
+			tmp->radius = get_float_value(split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
-		if (ft_strstr(file_split[++i], FIGURES_DIRECTIONAL))
-			tmp->dir = get_array_value(file_split[i]);
+		if (ft_strstr(split[++i], FIGURES_DIRECTIONAL))
+			tmp->dir = get_array_value(split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
 		i += 2;

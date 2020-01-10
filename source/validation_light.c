@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:26 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 16:45:44 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:41:04 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,35 +39,35 @@ t_lights		*find_light(t_lights **light)
 	return (new_elem);
 }
 
-static void		check_type_lights(int i, char **file_split, t_lights *tmp)
+static void		check_type_lights(int i, char **split, t_lights *tmp)
 {
-	if (ft_strcmp(LIGHT_TYPE_POINT, file_split[i]) == 0)
+	if (ft_strcmp(LIGHT_TYPE_POINT, split[i]) == 0)
 		tmp->type = Point;
-	else if (ft_strcmp(LIGHT_TYPE_AMBIENT, file_split[i]) == 0)
+	else if (ft_strcmp(LIGHT_TYPE_AMBIENT, split[i]) == 0)
 		tmp->type = Ambient;
-	else if (ft_strcmp(LIGHT_TYPE_DIRECTIONAL, file_split[i]) == 0)
+	else if (ft_strcmp(LIGHT_TYPE_DIRECTIONAL, split[i]) == 0)
 		tmp->type = Directional;
 	else
 		ft_exit(ERROR_LIGHTS);
 }
 
-int				lights_processing(int i, char **file_split, t_lights **light)
+int				lights_processing(int i, char **split, t_lights **light)
 {
 	t_lights	*tmp;
 
 	tmp = *light;
-	while (file_split[i] && (ft_strcmp(LIGHT, file_split[i]) == 0
-		&& ft_strcmp("-", file_split[i - 1]) == 0))
+	while (split[i] && (ft_strcmp(LIGHT, split[i]) == 0
+		&& ft_strcmp("-", split[i - 1]) == 0))
 	{
 		if (!tmp)
 			tmp = find_light(light);
-		check_type_lights(++i, file_split, tmp);
-		if (ft_strcmp(LIGHT_INTENSIVE, file_split[++i]))
-			tmp->intensive = get_float_value(file_split[i]);
+		check_type_lights(++i, split, tmp);
+		if (ft_strcmp(LIGHT_INTENSIVE, split[++i]))
+			tmp->intensive = get_float_value(split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
-		if (ft_strstr(file_split[++i], LIGHT_POS))
-			tmp->point = get_array_value(file_split[i]);
+		if (ft_strstr(split[++i], LIGHT_POS))
+			tmp->point = get_array_value(split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);
 		i += 2;

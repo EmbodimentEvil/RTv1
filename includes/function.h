@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 19:13:20 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:40:53 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ float			get_int_value(char *str);
 */
 t_lights		*new_light(void);
 t_lights		*find_light(t_lights **light);
-int				lights_processing(int i, char **file_split, t_lights **light);
+int				lights_processing(int i, char **split, t_lights **light);
 
 /*
 **  validation_light.c
 */
 t_obj			*new_obj(void);
 t_obj			*find_obj(t_obj **obj);
-int				objects_processing(int i, char **file_split,
+int				objects_processing(int i, char **split,
 					t_obj **figure);
 
 #endif

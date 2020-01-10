@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:53:55 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 15:47:10 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 15:29:27 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					main(int ac, char **av)
 	rt = init_rt();
 	validation(av[1], rt);
 	init_sdl(rt->sdl);
-	draw(rt);
+	render(rt);
 	sdl_loop(rt->sdl->win);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:18:44 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 14:51:24 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int				objects_processing(int i, char **file_split, t_obj **obj)
 	t_obj	*tmp;
 
 	tmp = *obj;
-	while (file_split[i] && ft_strcmp("-", file_split[i - 1]) == 0)
+	while (file_split[i] && (file_split[i - 1] && ft_strcmp("-", file_split[i - 1]) == 0))
 	{
 		if (!tmp)
 			tmp = find_obj(obj);

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:32:27 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:25:18 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 17:18:32 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_root			hit_cylinder(t_vector dir, t_vector camera, t_obj *cylinder)
 			- (cylinder->radius * cylinder->radius);
 	discrim = res.y * res.y - (4.0 * res.x * res.z);
 	if (discrim < 0)
-		return ((t_root){-1, -1});
+		return (t_root){-1, -1};
 	root.a = ((-res.y + sqrt(discrim)) / (2.0 * res.x));
 	root.b = ((-res.y - sqrt(discrim)) / (2.0 * res.x));
 	return (root);
@@ -65,17 +65,17 @@ t_root			hit_sphere(t_vector dir, t_vector camera, t_obj *sphere)
 	t_root		root;
 	t_vector	oc;
 	t_vector	res;
-	double		discriminant;
+	double		discrim;
 
 	oc = ft_vec_subtract(camera, sphere->pos);
 	res.x = ft_vec_dot(dir, dir);
 	res.y = 2 * ft_vec_dot(oc, dir);
 	res.z = ft_vec_dot(oc, oc) - sphere->radius * sphere->radius;
-	discriminant = res.y * res.y - 4 * res.x * res.z;
-	if (discriminant < 0)
-		return ((t_root){INFINITY, INFINITY});
-	root.a = (-res.y + sqrt(discriminant)) / ((int)res.x << 1);
-	root.b = (-res.y - sqrt(discriminant)) / ((int)res.x << 1);
+	discrim = res.y * res.y - 4 * res.x * res.z;
+	if (discrim < 0)
+		return (t_root){-1, -1};
+	root.a = ((-res.y + sqrt(discrim)) / (2.0 * res.x));
+	root.b = ((-res.y - sqrt(discrim)) / (2.0 * res.x));
 	return (root);
 }
 
@@ -104,5 +104,5 @@ t_root			hit_obj(t_vector dir, t_vector camera, t_obj *obj)
 		return (hit_cone(dir, camera, obj));
 	else if (obj->type == Cylinder)
 		return (hit_cylinder(dir, camera, obj));
-	return ((t_root){-1, -1});
+	return (t_root){-1, -1};
 }

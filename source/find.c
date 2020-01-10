@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 19:27:19 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:08:38 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 17:20:05 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		closest_object(t_obj *closest_obj, t_vector dir,
 	t_obj		*tmp;
 
 	tmp = rt->obj;
-	*closest_t = INFINITY;
+	*closest_t = MAX;
 	while (tmp)
 	{
 		root = hit_obj(dir, rt->camera, tmp);

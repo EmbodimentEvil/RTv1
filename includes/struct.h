@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:18:29 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 13:39:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 # include "rt.h"
 
-typedef enum						e_type_lights
+typedef enum					e_type_lights
 {
 	Point = 1,
 	Ambient,
 	Directional
-}									t_type_lights;
+}								t_type_lights;
 
-typedef enum						e_type_obj
+typedef enum					e_type_obj
 {
 	Cone,
 	Cylinder,
 	Sphere,
 	Plane
-}									t_type_obj;
+}								t_type_obj;
 
 typedef struct					s_img
 {
@@ -58,10 +58,6 @@ typedef struct					s_obj
 	t_vector					dir;
 	struct s_obj				*next;
 }								t_obj;
-
-/*
-**	Struct for storing values of sdl
-*/
 
 typedef struct					s_sdl
 {

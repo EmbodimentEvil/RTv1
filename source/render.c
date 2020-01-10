@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:50:09 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 20:34:14 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 18:40:13 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,22 @@ int				ray_trace(t_vector dir, t_rt *rt)
 	t_obj		closest_obj;
 	double		closest_t;
 
-	closest_obj.pos.x = 0;
-	closest_obj.pos.y = 0;
-	closest_obj.pos.z = 0;
+	ft_vec_init(closest_obj.pos);
+	closest_obj.radius = 0;
+	ft_vec_init(closest_obj.color);
+	closest_obj.next = 0;
+	closest_obj.specular = 0;
+	closest_obj.type = 0;
 	closest_object(&closest_obj, dir, &closest_t, rt);
+	if (closest_t == MAX)
+		return (0);
 	point = ft_vec_sum(rt->camera,
 				ft_vec_multiplication_num(dir, closest_t));
 	normal = get_normal(&closest_obj, point);
 	return (color_parse(point, normal, rt->light, closest_obj, dir));
 }
 
-void			draw(t_rt *rt)
+void			render(t_rt *rt)
 {
 	t_img		img;
 	t_vector	dir;

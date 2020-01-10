@@ -1,6 +1,6 @@
 -
 camera:
-	center: 0, 0, 0
+	pos: 0, 0, 0
 -
 light:
 	type: directional
@@ -20,21 +20,21 @@ light:
 cylinder:
 	color:  0, 255, 0
 	specular: 20
-	center:  0, 0, 10
+	pos:  0, 0, 10
 	radius: 0.2
 	direction: 0, 1, 0
 -
 plane:
 	color:  255, 0, 0
 	specular: 20
-	center:  0, 0, 12
+	pos:  0, 0, 12
 	radius: 0.1
 	direction: 0, 1, 0
 -
 sphere:
 	color:  0, 0, 255
 	specular: 20
-	center:  0, 0, 1
+	pos:  0, 0, 1
 	radius: 0.2
 	direction: 1, 2, 3
 -

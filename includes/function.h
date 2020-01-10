@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 19:32:51 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 15:29:16 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int				color_parse(t_vector point, t_vector normal,
 							t_lights *light, t_obj obj, t_vector dir);
 
 /*
-**	draw.c
+**	render.c
 */
 void			put_pixel(int x, int y, int color, SDL_Surface *sur);
 int				ray_trace(t_vector dir, t_rt *rt);
-void			draw(t_rt *rt);
+void			render(t_rt *rt);
 
 /*
 **	find.c

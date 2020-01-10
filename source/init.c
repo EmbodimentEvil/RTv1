@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:22:47 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 12:21:59 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 18:41:34 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 void			init_obj(t_obj *obj)
 {
-	obj->color.x = 0;
-	obj->color.y = 0;
-	obj->color.z = 0;
-	obj->specular = -1;
-	obj->pos.x = 0;
-	obj->pos.y = 0;
-	obj->pos.z = 0;
+	obj->type = 0;
+	ft_vec_init(obj->color);
+	obj->specular = 0;
+	ft_vec_init(obj->pos);
 	obj->radius = 0;
+	ft_vec_init(obj->dir);
+	obj->next = NULL;
 }
 
 void			init_sdl(t_sdl *sdl)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		ft_exit("SDL_Init");
-	if (!(sdl->win = SDL_CreateWindow("RT", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN)))
-		// SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP)))
+	if (!(sdl->win = SDL_CreateWindow("RT",
+									SDL_WINDOWPOS_UNDEFINED,
+									SDL_WINDOWPOS_UNDEFINED,
+									WIDTH, HEIGHT,
+									// SDL_WINDOW_FULLSCREEN_DESKTOP)))
+									SDL_WINDOW_SHOWN)))
 		ft_exit("SDL_CreateWindow");
 	if (!(sdl->sur = SDL_GetWindowSurface(sdl->win)))
 		ft_exit("SDL_GetWindowSurface");

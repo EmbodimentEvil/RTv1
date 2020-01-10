@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 15:29:16 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:05:03 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ t_vector		get_normal(t_obj *figure, t_vector point);
 **	color_parse.c
 */
 int				set_color_rgb(int red, int green, int blue);
-int				color_parse(t_vector point, t_vector normal,
-							t_lights *light, t_obj obj, t_vector dir);
+int				color_parse(t_math math, t_lights *light);
 
 /*
 **	render.c
@@ -62,7 +61,7 @@ t_root			hit_obj(t_vector dir, t_vector camera, t_obj *obj);
 /*
 **	init.c
 */
-void			init_figure(t_obj *figure);
+void			init_obj(t_obj *figure);
 void			init_sdl(t_sdl *sdl);
 t_rt			*init_rt(void);
 

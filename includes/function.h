@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 15:29:16 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:13:20 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_root			hit_obj(t_vector dir, t_vector camera, t_obj *obj);
 /*
 **	init.c
 */
-void			init_figure(t_obj *figure);
+void			init_obj(t_obj *obj);
 void			init_sdl(t_sdl *sdl);
 t_rt			*init_rt(void);
 

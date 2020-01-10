@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:46:04 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:27:14 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:19:45 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 double		compute_light(t_vector point, t_vector normal,
 							t_lights *lights, int specular, t_vector view)
 {
-	double	intensive;
-	double	len_n;
+	t_lights	*tmp;
 	t_vector	vec_l;
-	double		n_dot_l;
 	t_vector	vec_r;
+	double		intensive;
+	double		len_n;
+	double		n_dot_l;
 	double		r_dot_v;
-	t_lights	*tmp = lights;
 
 	intensive = 0;
 	len_n = ft_vec_length(normal);
+	tmp = lights;
 	while (tmp)
 	{
 		if (tmp->type == Ambient)

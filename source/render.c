@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:50:09 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 18:40:13 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:13:40 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ int				ray_trace(t_vector dir, t_rt *rt)
 	t_obj		closest_obj;
 	double		closest_t;
 
-	ft_vec_init(closest_obj.pos);
-	closest_obj.radius = 0;
-	ft_vec_init(closest_obj.color);
-	closest_obj.next = 0;
-	closest_obj.specular = 0;
-	closest_obj.type = 0;
+	init_obj(&closest_obj);
 	closest_object(&closest_obj, dir, &closest_t, rt);
 	if (closest_t == MAX)
 		return (0);

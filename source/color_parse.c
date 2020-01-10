@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:32:44 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 19:12:04 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 13:05:43 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,3 @@ int				color_parse(t_vector point, t_vector normal,
 		rgb.z = 255;
 	return (set_color_rgb((int)rgb.x, (int)rgb.y, (int)rgb.z));
 }
-
-/*
-31
-3080192
-
-48
-2883584
-*/

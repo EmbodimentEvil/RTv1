@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:53:37 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 20:15:39 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 13:18:44 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_vector		cone_normal(t_obj *obj, t_vector point)
 	double		k;
 
 	k = (1 + obj->radius * obj->radius);
-	m = ft_vec_dot(ft_vec_subtract(point, obj->pos), obj->direction);
-	normal = ft_vec_multiplication_num((obj->direction), (float)(m * k));
+	m = ft_vec_dot(ft_vec_subtract(point, obj->pos), obj->dir);
+	normal = ft_vec_multiplication_num((obj->dir), (float)(m * k));
 	normal = ft_vec_subtract(ft_vec_subtract(point, obj->pos), normal);
 	normal = ft_vec_multiplication_num(normal,
 		(double)(1.f / ft_vec_length(normal)));
@@ -32,8 +32,8 @@ t_vector		cylinder_normal(t_obj *obj, t_vector point)
 	t_vector	normal;
 	double		m;
 
-	m = ft_vec_dot(ft_vec_subtract(point, obj->pos), obj->direction);
-	normal = ft_vec_multiplication_num(obj->direction, (float)m);
+	m = ft_vec_dot(ft_vec_subtract(point, obj->pos), obj->dir);
+	normal = ft_vec_multiplication_num(obj->dir, (float)m);
 	normal = ft_vec_subtract(ft_vec_subtract(point, obj->pos), normal);
 	normal = ft_vec_multiplication_num(normal,
 		(double)(1.f / ft_vec_length(normal)));
@@ -54,7 +54,7 @@ t_vector		plane_normal(t_obj *obj, t_vector point)
 {
 	t_vector	normal;
 
-	normal = obj->direction;
+	normal = obj->dir;
 	return (normal);
 }
 

@@ -6,15 +6,15 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 18:44:47 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 13:18:44 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_obj		*new_obj(void)
+t_obj			*new_obj(void)
 {
-	t_obj	*obj;
+	t_obj		*obj;
 
 	if (!(obj = (t_obj *)malloc(sizeof(t_obj))))
 		ft_exit(ERROR_MALLOC);
@@ -27,10 +27,10 @@ t_obj		*new_obj(void)
 	return (obj);
 }
 
-t_obj		*find_obj(t_obj **obj)
+t_obj			*find_obj(t_obj **obj)
 {
-	t_obj	*tmp;
-	t_obj	*new_elem;
+	t_obj		*tmp;
+	t_obj		*new_elem;
 
 	tmp = *obj;
 	if (!tmp)
@@ -82,10 +82,9 @@ int				objects_processing(int i, char **file_split, t_obj **obj)
 	{
 		if (!tmp)
 			tmp = find_obj(obj);
-		check_type_objects(i, file_split, tmp);
-		check_color_and_specular_obj(++i, file_split, tmp);
-		++i;
-		if (ft_strstr(file_split[++i], FIGURES_CENTER))
+		check_type_objects(i++, file_split, tmp);
+		check_color_and_specular_obj(i++, file_split, tmp);
+		if (ft_strstr(file_split[++i], FIGURES_POS))
 			tmp->pos = get_array_value(file_split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
@@ -94,7 +93,7 @@ int				objects_processing(int i, char **file_split, t_obj **obj)
 		else
 			ft_exit(ERROR_FIGURES);
 		if (ft_strstr(file_split[++i], FIGURES_DIRECTIONAL))
-			tmp->direction = get_array_value(file_split[i]);
+			tmp->dir = get_array_value(file_split[i]);
 		else
 			ft_exit(ERROR_FIGURES);
 		i += 2;

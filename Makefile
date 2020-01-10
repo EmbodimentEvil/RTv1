@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/06 15:14:57 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/10 13:06:43 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,13 +49,13 @@ LIB = 		-L$(LIB_PATH) -lft
 
 SRC_NAME =	calculate_normals.c			\
 			color_parse.c				\
-			draw.c						\
 			find.c						\
 			help.c						\
 			hit.c						\
 			init.c						\
 			light.c						\
 			main.c						\
+			render.c					\
 			sdl_loop.c					\
 			validation.c				\
 			validation_get_value.c		\

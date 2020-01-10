@@ -6,13 +6,14 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 19:27:19 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/08 18:31:00 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 13:08:38 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void			closest_object(t_obj *closest_obj, t_vector dir, double *closest_t, t_rt *rt)
+void		closest_object(t_obj *closest_obj, t_vector dir,
+							double *closest_t, t_rt *rt)
 {
 	t_root		root;
 	t_obj		*tmp;

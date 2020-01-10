@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:46:04 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/06 17:43:35 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 13:27:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ double		compute_light(t_vector point, t_vector normal,
 			if (tmp->type == Point)
 				vec_l = ft_vec_subtract(tmp->point, point);
 			else
-			{
 				vec_l = tmp->point;
-			}
 			n_dot_l = ft_vec_dot(normal, vec_l);
 			if (n_dot_l > 0)
 				intensive += tmp->intensive * n_dot_l / (len_n * ft_vec_length(vec_l));

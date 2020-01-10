@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 14:51:24 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 19:38:06 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ static void		check_type_objects(int i, char **file_split, t_obj *tmp)
 		ft_exit(ERROR_FIGURES);
 }
 
-static void		check_color_and_specular_obj(int i, char **file_split,
-					t_obj *tmp)
+static void		check_color_specular_obj(int i, char **file_split, t_obj *tmp)
 {
 	if (ft_strcmp(FIGURES_COLOR, file_split[i]))
 		tmp->color = get_array_value(file_split[i]);
@@ -78,12 +77,13 @@ int				objects_processing(int i, char **file_split, t_obj **obj)
 	t_obj	*tmp;
 
 	tmp = *obj;
-	while (file_split[i] && (file_split[i - 1] && ft_strcmp("-", file_split[i - 1]) == 0))
+	while (file_split[i]
+			&& (file_split[i - 1] && ft_strcmp("-", file_split[i - 1]) == 0))
 	{
 		if (!tmp)
 			tmp = find_obj(obj);
 		check_type_objects(i++, file_split, tmp);
-		check_color_and_specular_obj(i++, file_split, tmp);
+		check_color_specular_obj(i++, file_split, tmp);
 		if (ft_strstr(file_split[++i], FIGURES_POS))
 			tmp->pos = get_array_value(file_split[i]);
 		else

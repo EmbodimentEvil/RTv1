@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:39:14 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:40:12 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,77 @@
 
 # include "rt.h"
 
-typedef enum					e_type_lights
+typedef enum				e_type_lights
 {
 	Point = 1,
 	Ambient,
 	Directional
-}								t_type_lights;
+}							t_type_lights;
 
-typedef enum					e_type_obj
+typedef enum				e_type_obj
 {
 	Cone,
 	Cylinder,
 	Sphere,
 	Plane
-}								t_type_obj;
+}							t_type_obj;
 
-typedef struct					s_img
+typedef struct				s_img
 {
-	int							curnt_x;
-	int							curnt_y;
-	int							finish_x;
-	int							finish_y;
-	int							half_width;
-	int							half_height;
-}								t_img;
+	int						curnt_x;
+	int						curnt_y;
+	int						finish_x;
+	int						finish_y;
+	int						half_width;
+	int						half_height;
+}							t_img;
 
-typedef struct					s_lights
+typedef struct				s_lights
 {
-	t_type_lights				type;
-	double						intensive;
-	t_vector					point;
-	struct s_lights				*next;
-}								t_lights;
+	t_type_lights			type;
+	double					intensive;
+	t_vector				point;
+	struct s_lights			*next;
+}							t_lights;
 
-typedef struct					s_obj
+typedef struct				s_obj
 {
-	t_type_obj					type;
-	t_vector					color;
-	int							specular;
-	t_vector					pos;
-	double						radius;
-	t_vector					dir;
-	struct s_obj				*next;
-}								t_obj;
+	t_type_obj				type;
+	t_vector				color;
+	int						specular;
+	t_vector				pos;
+	double					radius;
+	t_vector				dir;
+	struct s_obj			*next;
+}							t_obj;
 
-typedef struct					s_sdl
+typedef struct				s_sdl
 {
-	SDL_Window					*win;
-	SDL_Surface					*sur;
-	SDL_Event					event;
-}								t_sdl;
+	SDL_Window				*win;
+	SDL_Surface				*sur;
+	SDL_Event				event;
+}							t_sdl;
 
-typedef struct					s_root
+typedef struct				s_root
 {
-	double						a;
-	double						b;
-}								t_root;
+	double					a;
+	double					b;
+}							t_root;
 
-typedef struct					s_rt
+typedef struct				s_math
 {
-	t_sdl						*sdl;
-	t_obj						*obj;
-	t_vector					camera;
-	t_lights					*light;
-}								t_rt;
+	t_vector				point;
+	t_vector				normal;
+	t_obj					closest_obj;
+}							t_math;
+
+typedef struct				s_rt
+{
+	t_sdl					*sdl;
+	t_obj					*obj;
+	t_vector				camera;
+	t_lights				*light;
+	t_math					*math;
+}							t_rt;
 
 #endif

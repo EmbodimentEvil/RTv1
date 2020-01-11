@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_get_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:42:28 by sleonia           #+#    #+#             */
-/*   Updated: 2019/12/20 19:19:48 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 20:27:52 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_vector		get_array_value(char *str)
 		str++;
 	if (!(str_split = ft_strsplit(str, ',')))
 		ft_exit(ERROR_STRSPLIT);
-	if (ft_len_arr(str_split) > 3)
+	if (ft_len_arr(str_split) > 3 || ft_len_arr(str_split) < 3)
 		ft_exit(ERROR_INPUT);
 	point.x = ft_atof(str_split[0]);
 	point.y = ft_atof(str_split[1]);

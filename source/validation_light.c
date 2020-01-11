@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_light.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:26 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 19:41:04 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 20:34:55 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				lights_processing(int i, char **split, t_lights **light)
 		if (!tmp)
 			tmp = find_light(light);
 		check_type_lights(++i, split, tmp);
-		if (ft_strcmp(LIGHT_INTENSIVE, split[++i]))
+		if (ft_strstr(split[++i], LIGHT_INTENSIVE))
 			tmp->intensive = get_float_value(split[i]);
 		else
 			ft_exit(ERROR_LIGHTS);

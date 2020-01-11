@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/10 13:30:56 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/11 14:03:16 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ GREY = \033[37m
 UNDERLINE = \033[4m
 NORMAL = \033[0m
 
-NAME = RT
+NAME = RTv1
 
 FRAMEDIR = /Users/$(USER)/Library/Frameworks
 
@@ -30,6 +30,7 @@ SRC_PATH = ./source/
 OBJ_PATH = ./objects/
 INC_PATH = ./includes/
 LIB_PATH = ./libft
+HEADERS = $(addprefix, $(INC_PATH), $(HEADERS_NAME))
 INC = -I .  -I $(INC_PATH) -I $(LIB_PATH) -I ./ \
     		-I src/ \
 			-I Frameworks/SDL2.framework/Versions/A/Headers \
@@ -44,6 +45,11 @@ FRAME = 	-F Frameworks/ -framework SDL2 -framework SDL2_image \
 FLAGS = 	-Ofast -c -g
 # FLAGS = 	-Ofast -c -g -Wall -Werror -Wextra
 
+HEADERS_NAME =	define_value.h	\
+				errors.h		\
+				function.h		\
+				rt.h			\
+				struct.h		\
 
 LIB = 		-L$(LIB_PATH) -lft
 
@@ -77,7 +83,7 @@ $(NAME): $(OBJ)
 	@echo "💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\
 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀"
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
 	@mkdir -p $(OBJ_PATH)
 	@gcc $(FLAGS) $(INC) $< -o $@
 

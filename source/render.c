@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:50:09 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 19:13:40 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:45:45 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,16 @@ void			put_pixel(int x, int y, int color, SDL_Surface *sur)
 
 int				ray_trace(t_vector dir, t_rt *rt)
 {
-	t_vector	point;
-	t_vector	normal;
-	t_obj		closest_obj;
 	double		closest_t;
 
-	init_obj(&closest_obj);
-	closest_object(&closest_obj, dir, &closest_t, rt);
+	init_obj(&rt->math->closest_obj);
+	closest_object(&rt->math->closest_obj, dir, &closest_t, rt);
 	if (closest_t == MAX)
 		return (0);
-	point = ft_vec_sum(rt->camera,
+	rt->math->point = ft_vec_sum(rt->camera,
 				ft_vec_multiplication_num(dir, closest_t));
-	normal = get_normal(&closest_obj, point);
-	return (color_parse(point, normal, rt->light, closest_obj, dir));
+	rt->math->normal = get_normal(&rt->math->closest_obj, rt->math->point);
+	return (color_parse(rt->math, rt->light, dir));
 }
 
 void			render(t_rt *rt)

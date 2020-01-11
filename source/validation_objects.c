@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_objects.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lminta <lminta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 19:41:11 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/10 20:24:32 by lminta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ static void		check_type_objects(int i, char **split, t_obj *tmp)
 static void		check_color_and_specular_obj(int i, char **split,
 					t_obj *tmp)
 {
-	if (ft_strcmp(FIGURES_COLOR, split[i]))
+	if (ft_strstr(split[i], FIGURES_COLOR))
 		tmp->color = get_array_value(split[i]);
-	else if ((tmp->color.x < 0 || tmp->color.x > 255) &&
+	else
+		ft_exit("LOX");
+	if ((tmp->color.x < 0 || tmp->color.x > 255) &&
 		(tmp->color.y < 0 || tmp->color.y > 255)
 			&& (tmp->color.z < 0 || tmp->color.z > 255))
-		ft_exit(ERROR_FIGURES);
-	else
 		ft_exit(ERROR_FIGURES);
 	if (ft_strstr(split[++i], FIGURES_SPECULAR))
 		tmp->specular = get_float_value(split[i]);

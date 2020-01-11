@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:22:47 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 19:13:01 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 14:08:22 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_rt			*init_rt(void)
 	if (!(rt->obj = new_obj()))
 		ft_exit(ERROR_MALLOC);
 	if (!(rt->light = new_light()))
+		ft_exit(ERROR_MALLOC);
+	if (!(rt->math = ft_safe_malloc(sizeof(t_math))))
 		ft_exit(ERROR_MALLOC);
 	return (rt);
 }

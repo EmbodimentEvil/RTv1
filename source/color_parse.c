@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 16:32:44 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 16:14:36 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 18:19:36 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int				set_color_rgb(int red, int green, int blue)
 	return ((red & 0xFF) << 16) + ((green & 0xFF) << 8) + (blue & 0xFF);
 }
 
-int				color_parse(t_math *math, t_lights *light, t_vector dir)
+int				color_parse(t_rt *rt)
 {
 	t_vector	rgb;
 
-	rgb = ft_vec_multiplication_num(math->closest_obj->color,
-			compute_light(math, light, ft_vec_multiplication_num(dir, -3)));
+	rgb = ft_vec_multiplication_num(rt->math->closest_obj->color,
+			compute_light(ft_vec_multiplication_num(rt->math->dir, -1), rt));
 	if (rgb.x > 255)
 		rgb.x = 255;
 	if (rgb.y > 255)

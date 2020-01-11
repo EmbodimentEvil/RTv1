@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 16:18:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 19:29:25 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,23 @@ t_vector		get_normal(t_obj *figure, t_vector point);
 **	color_parse.c
 */
 int				set_color_rgb(int red, int green, int blue);
-int				color_parse(t_math *math, t_lights *light, t_vector dir);
+int				color_parse(t_rt *rt);
 
 /*
 **	render.c
 */
 void			put_pixel(int x, int y, int color, SDL_Surface *sur);
-int				ray_trace(t_vector dir, t_rt *rt);
+int				ray_trace(t_rt *rt);
 void			render(t_rt *rt);
 
 /*
 **	find.c
 */
-void			closest_object(t_vector dir, double *closest_t, t_rt *rt);
+void			closest_object(t_rt *rt);
 
 /*
 **	help.c
 */
-int				set_color_rgb(int red, int green, int blue);
 t_vector		calculate_direction(int x, int y, int width, int height);
 
 /*
@@ -67,17 +66,13 @@ t_rt			*init_rt(void);
 /*
 **	light.c
 */
-double			compute_light(t_math *math, t_lights *lights, t_vector view);
+double			compute_light(t_vector view, t_rt *rt);
 
 /*
 **  main.c
 */
 void			show_example_input(void);
 int				main(int ac, char **av);
-
-/*
-**	ray_trace.c
-*/
 
 /*
 **	sdl_loop.c

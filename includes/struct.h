@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:48 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 16:11:18 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 17:26:34 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,13 @@ typedef struct				s_root
 
 typedef struct				s_math
 {
+	t_vector				dir;
 	t_vector				point;
 	t_vector				normal;
 	t_obj					*closest_obj;
+	t_obj					*closest_obj_2;
+	double					closest_t;
+	double					closest_t_2;
 }							t_math;
 
 typedef struct				s_rt

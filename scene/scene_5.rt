@@ -22,7 +22,7 @@ cylinder:
 	specular: 5
 	pos:  0, 0, 10
 	radius: 0.2
-	direction: 1, 1, 0
+	direction: 0.04, 0, 1
 -
 plane:
 	color:  255, 0, 0

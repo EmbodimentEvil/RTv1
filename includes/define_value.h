@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 01:31:34 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 13:01:58 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 19:26:07 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FOV						M_PI / 2.0
 
 # define MIN						0.0001f
-# define MAX						1000000.0
+# define MAX						10000000.0
 
 # define SCENE_1					"./scene/scene_1.rt"
 # define SCENE_2					"./scene/scene_2.rt"

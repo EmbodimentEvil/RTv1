@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation_objects.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lminta <lminta@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 19:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 20:24:32 by lminta           ###   ########.fr       */
+/*   Updated: 2020/01/11 16:12:40 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ t_obj			*new_obj(void)
 	if (!(obj = (t_obj *)malloc(sizeof(t_obj))))
 		ft_exit(ERROR_MALLOC);
 	obj->type = 0;
-	obj->color.x = 0;
-	obj->color.y = 0;
-	obj->color.z = 0;
+	ft_vec_init(obj->color);
 	obj->specular = 0;
+	ft_vec_init(obj->pos);
+	obj->radius = 0;
+	ft_vec_init(obj->dir);
 	obj->next = NULL;
 	return (obj);
 }

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:50:09 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 14:45:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 16:21:46 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ int				ray_trace(t_vector dir, t_rt *rt)
 {
 	double		closest_t;
 
-	init_obj(&rt->math->closest_obj);
-	closest_object(&rt->math->closest_obj, dir, &closest_t, rt);
-	if (closest_t == MAX)
+	closest_object(dir, &closest_t, rt);
+	if (closest_t == MAX || !rt->math->closest_obj)
 		return (0);
 	rt->math->point = ft_vec_sum(rt->camera,
 				ft_vec_multiplication_num(dir, closest_t));
-	rt->math->normal = get_normal(&rt->math->closest_obj, rt->math->point);
+	rt->math->normal = get_normal(rt->math->closest_obj, rt->math->point);
 	return (color_parse(rt->math, rt->light, dir));
 }
 

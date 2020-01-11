@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 12:53:37 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/10 14:00:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 16:06:56 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ t_vector		cylinder_normal(t_obj *obj, t_vector point)
 	double		m;
 
 	m = ft_vec_dot(ft_vec_subtract(point, obj->pos), obj->dir);
-	normal = ft_vec_multiplication_num(obj->dir, (float)m);
+	obj->dir = ft_vec_multiplication_num(obj->dir,
+		(double)(1.f / ft_vec_length(obj->dir)));
+	normal = ft_vec_multiplication_num(obj->dir, m);
 	normal = ft_vec_subtract(ft_vec_subtract(point, obj->pos), normal);
 	normal = ft_vec_multiplication_num(normal,
 		(double)(1.f / ft_vec_length(normal)));

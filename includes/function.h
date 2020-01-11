@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 00:34:51 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 14:38:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 16:18:31 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void			render(t_rt *rt);
 /*
 **	find.c
 */
-void			closest_object(t_obj *closest_obj, t_vector dir,
-								double *closest_t, t_rt *rt);
+void			closest_object(t_vector dir, double *closest_t, t_rt *rt);
 
 /*
 **	help.c

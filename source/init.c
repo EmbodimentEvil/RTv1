@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:22:47 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 14:08:22 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/11 16:33:17 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void			init_sdl(t_sdl *sdl)
 									SDL_WINDOWPOS_UNDEFINED,
 									SDL_WINDOWPOS_UNDEFINED,
 									WIDTH, HEIGHT,
-									// SDL_WINDOW_FULLSCREEN_DESKTOP)))
 									SDL_WINDOW_SHOWN)))
 		ft_exit("SDL_CreateWindow");
 	if (!(sdl->sur = SDL_GetWindowSurface(sdl->win)))
@@ -50,7 +49,6 @@ t_rt			*init_rt(void)
 		ft_exit(ERROR_MALLOC);
 	if (!(rt->light = new_light()))
 		ft_exit(ERROR_MALLOC);
-	if (!(rt->math = ft_safe_malloc(sizeof(t_math))))
-		ft_exit(ERROR_MALLOC);
+	rt->math = ft_safe_malloc(sizeof(t_math));
 	return (rt);
 }

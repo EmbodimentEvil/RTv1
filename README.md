@@ -3,9 +3,9 @@
 ## RTv1.
 ---
 ### RTv1 is a simple ray tracing program.  
-# The project was developed as a part of 42 school program.
-# It parses a 3D  scene from a file and applies ray tracing algorithm to render the given scene.
-# Note: this project was made for MacOS..
+#### The project was developed as a part of 42 school program.
+#### It parses a 3D  scene from a file and applies ray tracing algorithm to render the given scene.
+#### Note: this project was made for MacOS..
 ![Example](https://github.com/EmbodimentEvil/RTv1/blob/master/images/Example_4.png)
 ---
 ## Compiling snd running

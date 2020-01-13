@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 23:46:04 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 19:30:26 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/13 17:58:17 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ static void		point_direct_light_math(double *intensive, t_lights *tmp,
 	double		r_dot_v;
 	double		n_dot_l;
 	t_vector	vec_l;
-	double		len_n;
 	t_vector	vec_r;
 
-	// len_n = ft_vec_length(rt->math->normal);
 	if (tmp->type == Point)
 		vec_l = ft_vec_subtract(tmp->point, rt->math->point);
 	else
@@ -60,7 +58,7 @@ static void		point_direct_light_math(double *intensive, t_lights *tmp,
 	n_dot_l = ft_vec_dot(rt->math->normal, vec_l);
 	if (n_dot_l > 0)
 		*intensive += tmp->intensive * n_dot_l
-						/ (ft_vec_length(rt->math->normal) * ft_vec_length(vec_l));
+				/ (ft_vec_length(rt->math->normal) * ft_vec_length(vec_l));
 	if (rt->math->closest_obj->specular != -1)
 	{
 		vec_r = ft_vec_subtract(ft_vec_multiplication_num(rt->math->normal, 2

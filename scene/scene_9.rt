@@ -33,37 +33,30 @@ light:
 	pos: 0, 0, 3
 -
 cylinder:
-	color: 143, 254, 9
+	color: 102, 255, 255
+	specular: 100
+	pos:  0, 0, 5
+	radius: 0.2
+	direction: 1, 1, 0
+-
+cylinder:
+	color: 102, 255, 255
+	specular: 100
+	pos:  0, 0, 5
+	radius: 0.2
+	direction: 1, 0, 0
+-
+cylinder:
+	color: 102, 255, 255
 	specular: 100
 	pos:  0, 0, 5
 	radius: 0.2
 	direction: 0, 1, 0
 -
 cylinder:
-	color: 143, 254, 9
+	color: 102, 255, 255
 	specular: 100
-	pos:  1, 0, 5
+	pos: 0, 0, 5
 	radius: 0.2
-	direction: 2, 1, 0
--
-cylinder:
-	color: 143, 254, 9
-	specular: 100
-	pos:  1, 1, 5
-	radius: 0.2
-	direction: 0, 1, 0
--
-cylinder:
-	color: 143, 254, 9
-	specular: 100
-	pos:  2, 2, 5
-	radius: 0.2
-	direction: 0, 1, 0
--
-cylinder:
-	color: 143, 254, 9
-	specular: 100
-	pos:  -1, 0, 5
-	radius: 0.2
-	direction: 0, 1, 0
+	direction: 1, -1, 0
 -

@@ -1,21 +1,21 @@
 -
 camera:
-	pos: 0, 0, 0
+	pos: 0, 0, 1
 -
 light:
 	type: directional
 	intensive: 0.4
-	pos: 0, 1, 0
+	pos: 0, 0, 0
 -
 light:
 	type: point
 	intensive: 0.4
-	pos: 0, 1, 0
+	pos: -3, -2, 0
 -
 sphere:
 	color:  0, 255, 0
 	specular: 20
 	pos:  0, 0, 5
-	radius: 0.2
+	radius: 0.8
 	direction: 1, 2, 3
 -

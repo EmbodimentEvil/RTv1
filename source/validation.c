@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 23:14:52 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/11 19:40:44 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/13 18:05:54 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char		*check_argument_name(char *arg)
 
 int			find_camera(int i, char **split, t_vector *camera)
 {
-	if (!split[i] || !split[i + 1])
+	if (!split[0])
 		ft_exit(ERROR_INPUT);
 	if (ft_strcmp("-", split[++i]) == 0)
 	{
@@ -74,6 +74,8 @@ void		validation(char *arg, t_rt *rt)
 		ft_exit(ERROR_READ_BIG_FILE);
 	if (!(split = ft_strsplit(file, '\n')))
 		ft_exit(ERROR_STRSPLIT);
+	if (ft_len_arr(split) < 16)
+		ft_exit(ERROR_INPUT);
 	i = (find_camera(i, split, &(rt->camera)));
 	i = (lights_processing(i, split, &rt->light));
 	i = (objects_processing(i, split, &rt->obj));
